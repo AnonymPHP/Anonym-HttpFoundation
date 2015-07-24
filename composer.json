@@ -1,0 +1,25 @@
+{
+  "name": "anonym-php/anonym-http-client",
+  "type": "library",
+  "description": "AnonymFramework Http Client Component",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AnonymPHP/Anonym-HttpClient.git"
+  },
+  "authors": [
+    {
+      "name": "Vahit Şerif Sağlam",
+      "email": "vahit.serif119@gmail.com",
+      "homepage": "http://www.gemframework.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Anonym\\Components\\HttpClient\\": "src/Anonym/Components/"
+    },
+    "classmap": [
+      "vendor/composer"
+    ]
+  }
+}
