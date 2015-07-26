@@ -9,6 +9,9 @@
 
     namespace Anonym\Components\HttpClient;
 
+    use Anonym\Components\Cookie\CookieContainer;
+    use Anonym\Components\Cookie\UseCookieHeaders;
+
     /**
      * Class Response
      * @package Anonym\Components\HttpClient
@@ -124,12 +127,6 @@
          */
         private $headers;
 
-        /**
-         * Cookie başlıklarını tutar
-         *
-         * @var
-         */
-        private $cookieHeaders;
 
         /**
          * Sınıfı başlatır
@@ -137,7 +134,8 @@
          * @param string $content içerik kısmı
          * @param string $statusCode gönderilecek durum kodu
          */
-        public function __construct($content = '', $statusCode = ''){
+        public function __construct($content = '', $statusCode = '')
+        {
             $this->setContent($content);
             $this->setStatusCode($statusCode);
         }
@@ -282,11 +280,12 @@
          * @param null $value
          * @return $this
          */
-        public function header($name, $value = null){
+        public function header($name, $value = null)
+        {
 
-            if($value === null){
+            if ($value === null) {
                 $this->headers[] = $name;
-            }else{
+            } else {
                 $this->headers[] = $this->headerString($name, $value);
             }
 
@@ -300,9 +299,120 @@
          * @param string $value
          * @return string
          */
-        private function headerString($name, $value = ''){
-            return sprintf("%s: %s", settype($key, "string"), settype($key, "string"));
+        private function headerString($name, $value = '')
+        {
+            if(is_integer($value)){
+                $value = "$value";
+            }
+
+            return sprintf("%s: %s", $name, $value);
         }
 
+        /**
+         * Tüm cookileri döndürür
+         *
+         * @return array
+         */
+        public function getCookies()
+        {
+            return CookieContainer::getCookies();
+        }
 
+        /**
+         * Belirtilen cookie değerini döndürür
+         *
+         * @param string $name cookie ismi
+         * @return bool
+         */
+        public function getCookie($name = '')
+        {
+            if (isset(CookieContainer::getCookies()[$name])) {
+                return CookieContainer::getCookies()[$name];
+            } else {
+                return false;
+            }
+        }
+
+        /**
+         * herşeyi cevap olarak gönderir
+         *
+         * @return bool
+         */
+        public function send()
+        {
+
+            if (!headers_sent()) {
+                $this->sendHeaders();
+                $this->sendContent();
+
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /**
+         *  sunucuya içeriği gönderir
+         */
+        private function sendContent()
+        {
+            echo $this->getContent();
+        }
+
+        /**
+         *  başlıkları sunucuya gönderir
+         */
+        private function sendHeaders()
+        {
+            $this->useCookies();
+            $this->setProtocolAndCode();
+            header(
+                sprintf(
+                    "Content-Type: %s; charset=%s",
+                    $this->getContentType(),
+                    $this->getCharset()
+                )
+            );
+            foreach ($this->getHeaders() as $header) {
+
+                header($header);
+            }
+        }
+
+        /**
+         * Cookileri kullanır
+         */
+        private function useCookies()
+        {
+            $useCookies = new UseCookieHeaders();
+            $useCookies->useCookies();
+        }
+
+        /**
+         * Protocol version ve code atamasını yapar
+         */
+        private function setProtocolAndCode()
+        {
+            $code = $this->getStatusCode();
+            $statusText = $this->getStatusTexts();
+            if (isset($statusText[$code])) {
+                $text = $statusText[$code];
+            } else {
+                $text = '';
+            }
+            header(sprintf("%s %d %s ", $this->getProtocolVersion(), $code, $text));
+            http_response_code($code);
+        }
+
+        /**
+         * Static olarak sınıfı başlatır
+         *
+         * @param string $content
+         * @param int $statusCode
+         * @return Response
+         */
+        public static function make($content = '', $statusCode = 200)
+        {
+           return new static($content, $statusCode);
+        }
     }
