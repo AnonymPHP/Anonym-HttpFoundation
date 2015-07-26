@@ -15,8 +15,23 @@
      */
     class RequestHeaders
     {
+        /**
+         * Headerları depolar
+         *
+         * @var array|false
+         */
         protected $headers;
+
+        /**
+         * server bilgilerini depolar
+         *
+         * @var array
+         */
         private $server;
+
+        /**
+         * sınıfı başlatır
+         */
         public function __construct()
         {
             $this->headers = getallheaders();
@@ -31,6 +46,7 @@
         {
             return $this->server;
         }
+
         /**
          * Header'ları ekler
          *
