@@ -56,6 +56,7 @@
         {
             unset($_POST[$name]);
         }
+
         /**
          * @return mixed Post verilerini döndürür
          */
@@ -63,27 +64,6 @@
         {
             if (isset($_POST)) {
                 return $_POST;
-            } else {
-                return false;
-            }
-        }
-        /**
-         * Csrf token i çıkartır
-         *
-         * @return mixed
-         */
-        public static function getAllClean()
-        {
-            if (isset($_POST)) {
-                $post = $_POST;
-                $session = session();
-                if (true === $session->has('CsrfTokenSessionName')) {
-                    $value = $session->get('CsrfTokenSessionName');
-                    if (isset($post[$value])) {
-                        unset($post[$value]);
-                    }
-                }
-                return $post;
             } else {
                 return false;
             }
