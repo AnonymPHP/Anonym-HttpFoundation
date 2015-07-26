@@ -44,7 +44,7 @@
          * Özel terimlerden getirme
          *
          * @param string $name
-         * @return unknown
+         * @return string
          */
         public function get($name = 'HTTP_HOST')
         {
