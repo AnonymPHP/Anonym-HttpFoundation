@@ -9,12 +9,8 @@
 
     namespace Anonym\Components\HttpClient;
 
-    /**
-     * Class Redirect
-     * @package Anonym\Components\HttpClient
-     */
-    class Redirect
-    {
 
+    class Server
+    {
 
     }
