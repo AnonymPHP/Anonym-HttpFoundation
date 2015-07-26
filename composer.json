@@ -14,6 +14,10 @@
       "homepage": "http://www.gemframework.com"
     }
   ],
+  "require": {
+    "php": ">=5.4",
+    "anonym-php/anonym-cookie": "dev-master"
+  },
   "autoload": {
     "psr-4": {
       "Anonym\\Components\\HttpClient\\": "src/Anonym/Components/"
