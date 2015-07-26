@@ -347,7 +347,8 @@
 
                 return true;
             } else {
-
+                throw new HttpResponseException('Başlıklar daha önceden gönderilmiş,
+                tekrardan başlık gönderemezsiniz');
             }
         }
 
