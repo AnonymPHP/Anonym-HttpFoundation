@@ -9,8 +9,16 @@
 
     namespace Anonym\Components\HttpClient;
 
-
+    /**
+     * Interface ResponseInterface
+     * @package Anonym\Components\HttpClient
+     */
     interface ResponseInterface
     {
-
+        /**
+         * İçeriği gönderir
+         *
+         * @return bool
+         */
+        public function send();
     }
