@@ -336,7 +336,8 @@
         }
 
         /**
-         * herşeyi cevap olarak gönderir
+         * içeriği ve başlıkları gönderiri
+         *
          * @throws HttpResponseException
          * @return bool
          */
