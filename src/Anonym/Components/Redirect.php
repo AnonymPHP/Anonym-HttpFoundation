@@ -8,48 +8,121 @@
      */
 
     namespace Anonym\Components\HttpClient;
+    use Anonym\Components\HttpClient\RedirectUrlEmptyException;
+
     /**
      * Class Redirect
      * @package Anonym\Components\HttpClient
      */
-    class Redirect
+    class Redirect extends Response
     {
+
+        /**
+         * Yönlendirme için beklenecek zaman
+         *
+         * @var integer
+         */
+        private $time;
+        /**
+         * Yönlendirilecek url i atar
+         *
+         * @var string
+         */
+        private $target;
+
         /**
          * Yönlendirme işlemi yapar
          *
          * @param string  $adress
          * @param integer $time
+         * @throws RedirectUrlEmptyException
          */
-        public static function to($adress, $time = null)
+        public function __construct($adress = '', $time = 0)
         {
-            if ($time === null) {
-                static::location($adress);
-            } else {
-                static::refresh($adress, $time);
+
+            if($adress === ''){
+                throw new RedirectUrlEmptyException('Yönlendirilecek url boş olamaz');
             }
+
+            parent::__construct();
+            $this->setTarget($adress);
+            $this->setTime($time);
         }
         /**
          *  Eski sayfaya geri döndürür
          */
-        public static function back()
+        public function back()
         {
             self::to($_SERVER['HTTP_REFERER']);
         }
+
         /**
-         * YÖnlendirme yapar
-         * @param $url
-         * @param $time
+         * @return string
          */
-        private static function refresh($url, $time)
+        public function getTarget()
         {
-            header("Refresh:{$time},url=$url");
+            return $this->target;
         }
+
         /**
-         * Url yönlendirmesi yapar
-         * @param string $url
+         * @param string $target
+         * @return Redirect
          */
-        private static function location($url)
+        public function setTarget($target)
         {
-            header("Location:$url");
+            $this->target = $target;
+
+            return $this;
+        }
+
+        /**
+         * @return int
+         */
+        public function getTime()
+        {
+            return $this->time;
+        }
+
+        /**
+         * @param int $time
+         * @return Redirect
+         */
+        public function setTime($time)
+        {
+            $this->time = $time;
+
+            return $this;
+        }
+
+
+        /**
+         * Yönlendirme işlemini yapar
+         *
+         * @throws HttpResponseException
+         */
+        public function redirect(){
+
+            $time = $this->getTime();
+            $target = $this->getTarget();
+            if($time === 0)
+            {
+                $this->header("Location", $target);
+            }else{
+                $this->header(sprintf('Refresh:%d, url=%s', $time, $target));
+            }
+
+            $this->send();
+        }
+
+        /**
+         * Static olarak içeriği oluşturur
+         *
+         * @param string $target
+         * @param int $time
+         * @return static
+         */
+        public static function create($target = '', $time = 0)
+        {
+            return new static($target, $time);
         }
     }
