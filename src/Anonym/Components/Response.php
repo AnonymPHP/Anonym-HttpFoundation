@@ -11,6 +11,7 @@
 
     use Anonym\Components\Cookie\CookieContainer;
     use Anonym\Components\Cookie\UseCookieHeaders;
+    use Anonym\Components\HttpClient\HttpResponseException;
 
     /**
      * Class Response
@@ -335,7 +336,7 @@
 
         /**
          * herşeyi cevap olarak gönderir
-         *
+         * @throws HttpResponseException
          * @return bool
          */
         public function send()
