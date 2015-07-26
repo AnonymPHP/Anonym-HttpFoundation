@@ -13,7 +13,7 @@
     class ServerHttpHeaders extends RequestHeaders
     {
         /**
-         * Server De�i�kenindeki Http headerleri atar.
+         * Server Değişkenindeki Http headerleri atar.
          */
         public function __construct()
         {
@@ -29,6 +29,6 @@
                     $headers["Content-Length"] = $value;
                 }
             }
-            $this->headers = array_merge($this->headers, $headers);
+            $this->headers = array_merge($this->getHeaders(), $headers);
         }
     }

@@ -37,6 +37,7 @@
             $this->headers = getallheaders();
             $this->server = $_SERVER;
         }
+
         /**
          * Server verilerini döndürür
          *
