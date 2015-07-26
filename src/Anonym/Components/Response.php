@@ -12,12 +12,13 @@
     use Anonym\Components\Cookie\CookieContainer;
     use Anonym\Components\Cookie\UseCookieHeaders;
     use Anonym\Components\HttpClient\HttpResponseException;
+    use Anonym\Components\HttpClient\ResponseInterface;
 
     /**
      * Class Response
      * @package Anonym\Components\HttpClient
      */
-    class Response
+    class Response implements ResponseInterface
     {
         /**
          * dosya tipi
