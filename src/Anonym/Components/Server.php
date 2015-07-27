@@ -126,4 +126,25 @@
 
             return $ip;
         }
+
+        /**
+         * @return array
+         */
+        public function getServerFilters()
+        {
+            return $this->serverFilters;
+        }
+
+        /**
+         * @param array $serverFilters
+         * @return Server
+         */
+        public function setServerFilters($serverFilters)
+        {
+            $this->serverFilters = $serverFilters;
+
+            return $this;
+        }
+
+
     }

@@ -17,6 +17,22 @@
     class Request extends Server
     {
 
+
+        /**
+         * Sınıf çağrılırken kullanılan header bilgilerini tutar
+         *
+         * @var array
+         */
+        private $headers;
+
+        /**
+         * Sınıfı başlatır ve header bilgilerini atar
+         */
+        public function __construct(){
+
+
+        }
+
         /**
          * Kullanıcının geldiği url i döndürür
          *
@@ -25,6 +41,7 @@
         public function back(){
             return $this->referer;
         }
+
 
         /**
          * Kullanıcının şuanda aktif olarak buluğu url i döndürür
@@ -43,5 +60,26 @@
         public function host(){
             return $this->host;
         }
+
+        /**
+         * @return array
+         */
+        public function getHeaders()
+        {
+            return $this->headers;
+        }
+
+        /**
+         * @param array $headers
+         * @return Request
+         */
+        public function setHeaders($headers)
+        {
+            $this->headers = $headers;
+
+            return $this;
+        }
+
+
 
     }
