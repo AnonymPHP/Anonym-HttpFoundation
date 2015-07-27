@@ -9,6 +9,7 @@
 
     namespace Anonym\Components\HttpClient;
 
+    use Anonym\Components\Cookie\Cookie;
     use Anonym\Components\Cookie\CookieContainer;
     use Anonym\Components\Cookie\UseCookieHeaders;
     use Anonym\Components\HttpClient\HttpResponseException;
@@ -108,6 +109,13 @@
             510 => 'Not Extended',                                                // RFC2774
             511 => 'Network Authentication Required',                             // RFC6585
         ];
+
+        /**
+         * Cookie objesi
+         *
+         * @var Cookie
+         */
+        private  $cookieBase;
         /**
          * İçeriği tutar
          *
@@ -140,6 +148,7 @@
         {
             $this->setContent($content);
             $this->setStatusCode($statusCode);
+            $this->cookieBase = new Cookie();
         }
 
         /**
@@ -408,6 +417,15 @@
             http_response_code($code);
         }
 
+
+        /**
+         * Cookie objesini döndürür
+         *
+         * @return Cookie
+         */
+        public function cookieBase(){
+            return $this->cookieBase;
+        }
         /**
          * Static olarak sınıfı başlatır
          *
