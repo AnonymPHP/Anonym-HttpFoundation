@@ -40,6 +40,15 @@
         {
             return $this->method;
         }
+
+        /**
+         * Server verilerini döndürür
+         *
+         * @return array
+         */
+        public function getServer(){
+            return $_SERVER;
+        }
         /**
          * Özel terimlerden getirme
          *

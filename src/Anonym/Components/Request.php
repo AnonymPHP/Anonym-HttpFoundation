@@ -30,7 +30,8 @@
          */
         public function __construct(){
 
-
+            $headers = (new RequestHeaders())->getHeaders();
+            $this->setHeaders($headers);
         }
 
         /**
@@ -76,7 +77,6 @@
         public function setHeaders($headers)
         {
             $this->headers = $headers;
-
             return $this;
         }
 
