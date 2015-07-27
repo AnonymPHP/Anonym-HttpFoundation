@@ -26,4 +26,15 @@
             return $this->referer;
         }
 
+
+
+        /**
+         * Kullanıcının bulunduğu host u döndürür
+         *
+         * @return string
+         */
+        public function host(){
+            return $this->host;
+        }
+
     }
