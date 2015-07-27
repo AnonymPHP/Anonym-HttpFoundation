@@ -20,7 +20,7 @@
          * @var array
          *  Özel arama terimleri
          */
-        public $server_filters = [
+        public $serverFilters = [
             'useragent' => 'HTTP_USER_AGENT',
             'referer' => 'HTTP_REFERER',
             'host' => 'HTTP_HOST',
@@ -79,9 +79,9 @@
          */
         public function __get($name)
         {
-            if (isset($this->server_filters[$name])) {
-                if (isset($_SERVER[$this->server_filters[$name]])) {
-                    return $_SERVER[$this->server_filters[$name]];
+            if (isset($this->serverFilters[$name])) {
+                if (isset($_SERVER[$this->serverFilters[$name]])) {
+                    return $_SERVER[$this->serverFilters[$name]];
                 } else {
                     return false;
                 }
