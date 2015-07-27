@@ -13,7 +13,7 @@
      * Class Input
      * @package Anonym\Components\HttpClient
      */
-    class Input
+    class Input implements InputInterface
     {
         /**
          * $name' e atanan veriye göre $_POST da veri varmı yokmu onu kontrol eder
@@ -58,7 +58,9 @@
         }
 
         /**
-         * @return mixed Post verilerini döndürür
+         * @return mixed
+         *
+         * Post verilerini döndürür
          */
         public static function getAll()
         {
