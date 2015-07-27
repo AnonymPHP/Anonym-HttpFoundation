@@ -23,6 +23,12 @@
          */
         private $callback;
 
+        /**
+         * Sınıfı başlatır ve çağrılabilir fonksiyonu kullanır
+         *
+         * @param callable $callback
+         * @param int $statusCode
+         */
         public function __construct(callable $callback = '', $statusCode = 200){
             parent::__construct('', $statusCode);
 
