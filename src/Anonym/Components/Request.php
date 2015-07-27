@@ -26,7 +26,14 @@
             return $this->referer;
         }
 
-
+        /**
+         * Kullanıcının şuanda aktif olarak buluğu url i döndürür
+         *
+         * @return string
+         */
+        public function url(){
+            return $this->getUrl();
+        }
 
         /**
          * Kullanıcının bulunduğu host u döndürür
