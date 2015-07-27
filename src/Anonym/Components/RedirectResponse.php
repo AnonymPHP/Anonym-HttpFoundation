@@ -100,7 +100,7 @@
          *
          * @throws HttpResponseException
          */
-        public function redirect(){
+        public function send(){
 
             $time = $this->getTime();
             $target = $this->getTarget();

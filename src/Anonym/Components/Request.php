@@ -7,6 +7,10 @@
      *
      */
 
-include "vendor/autoload.php";
+    namespace Anonym\Components\HttpClient;
 
 
+    class Request
+    {
+
+    }

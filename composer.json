@@ -1,9 +1,9 @@
 {
-  "name": "anonym-php/anonym-http-client",
+  "name": "anonym-php/anonym-httpclient",
   "type": "library",
   "description": "AnonymFramework Http Client Component",
   "license": "MIT",
-  "repository": {
+  "repositories": {
     "type": "git",
     "url": "git://github.com/AnonymPHP/Anonym-HttpClient.git"
   },
