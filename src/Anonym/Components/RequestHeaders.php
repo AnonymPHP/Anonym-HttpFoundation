@@ -13,7 +13,7 @@
      * Class RequestHeaders
      * @package Anonym\Components\HttpClient
      */
-    class RequestHeaders
+    class RequestHeaders implements RequestHeadersInterface
     {
         /**
          * Headerları depolar
