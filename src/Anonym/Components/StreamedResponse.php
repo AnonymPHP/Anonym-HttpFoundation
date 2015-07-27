@@ -39,6 +39,7 @@
         public function __construct(callable $callback = '', $statusCode = 200){
             parent::__construct('', $statusCode);
             $this->setCallback($callback);
+            $this->setStreamed(false);
 
         }
 
@@ -80,6 +81,17 @@
             return $this;
         }
 
+        /**
+         *  içeriği gönderir
+         */
+        public function send(){
 
+            if($this->isStreamed()){
+                return;
+            }
 
+            $this->setStreamed(true);
+            call_user_func($this->getCallback());
+
+        }
     }

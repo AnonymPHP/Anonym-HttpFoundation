@@ -80,6 +80,12 @@
             return $this;
         }
 
-
-
+        /**
+         * Ana yolu dönderir
+         *
+         * @return string
+         */
+        public function findBaseUri(){
+            return $this->getUrl();
+        }
     }
