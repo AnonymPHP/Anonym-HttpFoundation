@@ -8,6 +8,7 @@
      */
 
     namespace Anonym\Components\HttpClient;
+    use Anonym\Components\Cookie\Http\CookieBag;
     use Anonym\Components\HttpClient\Server;
 
     /**
@@ -17,7 +18,20 @@
     class Request extends Server
     {
 
-
+        /**
+         *  gerekli method sabitleri
+         *
+         */
+        const METHOD_HEAD = 'HEAD';
+        const METHOD_GET = 'GET';
+        const METHOD_POST = 'POST';
+        const METHOD_PUT = 'PUT';
+        const METHOD_PATCH = 'PATCH';
+        const METHOD_DELETE = 'DELETE';
+        const METHOD_PURGE = 'PURGE';
+        const METHOD_OPTIONS = 'OPTIONS';
+        const METHOD_TRACE = 'TRACE';
+        const METHOD_CONNECT = 'CONNECT';
         /**
          * Sınıf çağrılırken kullanılan header bilgilerini tutar
          *
@@ -26,12 +40,20 @@
         private $headers;
 
         /**
+         * Cookileri döndürür
+         *
+         * @var array
+         */
+        private $cookies;
+
+        /**
          * Sınıfı başlatır ve header bilgilerini atar
          */
         public function __construct(){
 
             $headers = (new RequestHeaders())->getHeaders();
             $this->setHeaders($headers);
+            $this->setCookies( (new CookieBag())->getCookies());
         }
 
         /**
@@ -42,6 +64,26 @@
         public function back(){
             return $this->referer;
         }
+
+        /**
+         * @return array
+         */
+        public function getCookies()
+        {
+            return $this->cookies;
+        }
+
+        /**
+         * @param array $cookies
+         * @return Request
+         */
+        public function setCookies($cookies)
+        {
+            $this->cookies = $cookies;
+
+            return $this;
+        }
+
 
 
         /**

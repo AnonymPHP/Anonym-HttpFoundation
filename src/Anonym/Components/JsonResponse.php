@@ -27,6 +27,7 @@
             $this->setContentType('application/json');
 
         }
+
         /**
          * Yeni bir instance oluşturur
          *

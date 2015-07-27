@@ -14,7 +14,7 @@
      * Class StreamedResponse
      * @package Anonym\Components\HttpClient
      */
-    class StreamedResponse extends Response
+    class StreamedResponse extends Response implements ResponseInterface
     {
         /**
          * Çağırlabilir fonksiyonu tutar
