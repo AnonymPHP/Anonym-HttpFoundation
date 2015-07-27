@@ -19,7 +19,7 @@
   "minimum-stability" : "dev",
   "require": {
     "php": ">=5.4",
-    "anonym-php/anonym-cookie": "dev-master"
+    "anonym-php/anonym-cookie": "*"
   },
   "autoload": {
     "psr-4": {
