@@ -24,6 +24,13 @@
         private $callback;
 
         /**
+         * Sınıfın henüz gönderilip gönderilmediği tutulur
+         *
+         * @var bool
+         */
+        private $streamed;
+
+        /**
          * Sınıfı başlatır ve çağrılabilir fonksiyonu kullanır
          *
          * @param callable $callback
@@ -31,6 +38,7 @@
          */
         public function __construct(callable $callback = '', $statusCode = 200){
             parent::__construct('', $statusCode);
+            $this->setCallback($callback);
 
         }
 
@@ -46,13 +54,12 @@
          * @param callable $callback
          * @return StreamedResponse
          */
-        public function setCallback($callback)
+        public function setCallback(callable $callback)
         {
             $this->callback = $callback;
 
             return $this;
         }
-
 
 
     }
