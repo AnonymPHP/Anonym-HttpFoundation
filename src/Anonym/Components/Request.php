@@ -10,6 +10,7 @@
     namespace Anonym\Components\HttpClient;
     use Anonym\Components\Cookie\Http\CookieBag;
     use Anonym\Components\HttpClient\Server;
+    use Anonym\Components\HttpClient\ServerHttpHeaders;
 
     /**
      * Class Request
@@ -51,7 +52,7 @@
          */
         public function __construct(){
 
-            $headers = (new RequestHeaders())->getHeaders();
+            $headers = (new ServerHttpHeaders())->getHeaders();
             $this->setHeaders($headers);
             $this->setCookies( (new CookieBag())->getCookies());
         }
