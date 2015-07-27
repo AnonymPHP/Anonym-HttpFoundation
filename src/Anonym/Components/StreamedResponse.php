@@ -34,6 +34,25 @@
 
         }
 
+        /**
+         * @return callable
+         */
+        public function getCallback()
+        {
+            return $this->callback;
+        }
+
+        /**
+         * @param callable $callback
+         * @return StreamedResponse
+         */
+        public function setCallback($callback)
+        {
+            $this->callback = $callback;
+
+            return $this;
+        }
+
 
 
     }
