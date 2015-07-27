@@ -61,5 +61,25 @@
             return $this;
         }
 
+        /**
+         * @return boolean
+         */
+        public function isStreamed()
+        {
+            return $this->streamed;
+        }
+
+        /**
+         * @param boolean $streamed
+         * @return StreamedResponse
+         */
+        public function setStreamed($streamed)
+        {
+            $this->streamed = $streamed;
+
+            return $this;
+        }
+
+
 
     }
