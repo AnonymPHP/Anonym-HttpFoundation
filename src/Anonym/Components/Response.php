@@ -417,15 +417,26 @@
             http_response_code($code);
         }
 
-
         /**
-         * Cookie objesini döndürür
-         *
          * @return Cookie
          */
-        public function cookieBase(){
+        public function getCookieBase()
+        {
             return $this->cookieBase;
         }
+
+        /**
+         * @param Cookie $cookieBase
+         * @return Response
+         */
+        public function setCookieBase($cookieBase)
+        {
+            $this->cookieBase = $cookieBase;
+
+            return $this;
+        }
+
+
         /**
          * Static olarak sınıfı başlatır
          *

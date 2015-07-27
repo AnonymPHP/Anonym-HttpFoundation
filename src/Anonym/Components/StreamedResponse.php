@@ -16,5 +16,18 @@
      */
     class StreamedResponse extends Response
     {
+        /**
+         * Çağırlabilir fonksiyonu tutar
+         *
+         * @var callable
+         */
+        private $callback;
+
+        public function __construct(callable $callback = '', $statusCode = 200){
+            parent::__construct('', $statusCode);
+
+        }
+
+
 
     }
