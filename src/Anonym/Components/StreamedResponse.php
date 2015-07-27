@@ -94,4 +94,16 @@
             call_user_func($this->getCallback());
 
         }
+
+        /**
+         * Yeni bir instance oluşturur
+         *
+         * @param callable|null $callback
+         * @param int    $statusCode
+         * @return static
+         */
+        public static function create(callable $callback = null, $statusCode = 200)
+        {
+            return new static($callback, $statusCode);
+        }
     }
