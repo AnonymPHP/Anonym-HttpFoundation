@@ -9,6 +9,7 @@
 
     namespace Anonym\Components\HttpClient;
     use Anonym\Components\Cookie\Http\CookieBag;
+    use Anonym\Components\Cookie\ReposityInterface;
     use Anonym\Components\HttpClient\Server;
     use Anonym\Components\HttpClient\ServerHttpHeaders;
 
@@ -16,7 +17,7 @@
      * Class Request
      * @package Anonym\Components\HttpClient
      */
-    class Request extends Server
+    class Request extends Server implements RequestHeaderInterface, ReposityInterface
     {
 
         /**
@@ -75,6 +76,15 @@
         }
 
         /**
+         * Kullanıcının giriş yaptığı aygıtın bilgilerini döndürür
+         *
+         * @return string
+         */
+        public function useragent(){
+            return $this->useragent;
+        }
+
+        /**
          * @param array $cookies
          * @return Request
          */
@@ -84,8 +94,6 @@
 
             return $this;
         }
-
-
 
         /**
          * Kullanıcının şuanda aktif olarak buluğu url i döndürür
@@ -106,6 +114,8 @@
         }
 
         /**
+         * Header bilgilerini döndürür
+         *
          * @return array
          */
         public function getHeaders()
@@ -114,6 +124,8 @@
         }
 
         /**
+         * Header bilgilerini atar
+         *
          * @param array $headers
          * @return Request
          */
