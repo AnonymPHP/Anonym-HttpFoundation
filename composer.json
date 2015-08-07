@@ -12,9 +12,9 @@
     }
   ],
   "minimum-stability" : "dev",
-  "require": {
+  "require-dev": {
     "php": ">=5.4",
-    "anonym-php/anonym-cookie": "dev-master"
+    "anonym-php/anonym-cookie ": "dev-master"
   },
   "autoload": {
     "psr-4": {
