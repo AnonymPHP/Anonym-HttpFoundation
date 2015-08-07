@@ -1,14 +1,9 @@
 {
   "name": "anonym-php/anonym-httpclient",
   "type": "library",
+  "keywords" : ["http", "client", "httpclient"],
   "description": "AnonymFramework Http Client Component",
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git://github.com/AnonymPHP/Anonym-HttpClient.git"
-    }
-  ],
   "authors": [
     {
       "name": "Vahit Şerif Sağlam",
