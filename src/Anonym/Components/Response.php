@@ -436,6 +436,15 @@
             return $this;
         }
 
+        /** Json Objesi oluşturur
+         * @param string $content
+         * @param int $statusCode
+         * @return JsonResponse
+         */
+        public static function jsonResponse($content = '', $statusCode = 200)
+        {
+            return new JsonResponse($content, $statusCode);
+        }
 
         /**
          * Static olarak sınıfı başlatır
