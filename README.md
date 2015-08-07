@@ -1,7 +1,7 @@
 Anonym-HttpClient
 ================
 
-Bu açıklamada http client de sahip olunan sınıfların nasıl kullanıldığını açıklıyorum.
+Bu aÃ§Ä±klamada http client de sahip olunan sÄ±nÄ±flarÄ±n nasÄ±l kullanÄ±ldÄ±ÄŸÄ±nÄ± aÃ§Ä±klÄ±yorum.
 
 Response
 ----------------
@@ -9,7 +9,7 @@ Response
 
 ```php
 
-$response = new Response('İçerik', 200); // durum kodu
+$response = new Response('Ä°Ã§erik', 200); // durum kodu
 // $response = Response::make('Hello World', 200);
 // $response->setCharset('UTF-8');
 $response->send();
@@ -24,7 +24,7 @@ $cookies = $response->getCookies();
 ```
 
 
-Başlık Eklemek
+BaÅŸlÄ±k Eklemek
 -------------
 
 ```php
@@ -43,12 +43,12 @@ $json = Response::jsonResponse('Hello world', 200);
 ```
 
 
-Yönlendirme
+YÃ¶nlendirme
 -----------
 
 ```php
 
-$redirect = new RedirectResponse('url', $time); // yönlendirilecek adres ve süre, süre öntanımlı olarak 0 dır
+$redirect = new RedirectResponse('url', $time); // yÃ¶nlendirilecek adres ve sÃ¼re, sÃ¼re Ã¶ntanÄ±mlÄ± olarak 0 dÄ±r
 $redirect->send();
 
 ```
