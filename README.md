@@ -41,3 +41,14 @@ JsonResponse
 $json = Response::jsonResponse('Hello world', 200);
 
 ```
+
+
+Yönlendirme
+-----------
+
+```php
+
+$redirect = new RedirectResponse('url', $time); // yönlendirilecek adres ve süre, süre öntanımlı olarak 0 dır
+$redirect->send();
+
+```
