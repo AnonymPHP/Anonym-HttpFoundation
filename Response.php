@@ -436,16 +436,29 @@
             return $this;
         }
 
-        /** Json Objesi oluşturur
+        /**
+         * Gönderilecek yanıtın bir json sayfasına ait olacağını ayarlar
+         *
          * @param string $content
          * @param int $statusCode
          * @return JsonResponse
          */
-        public static function jsonResponse($content = '', $statusCode = 200)
+        public  function jsonResponse($content = '', $statusCode = 200)
         {
             return new JsonResponse($content, $statusCode);
         }
 
+        /**
+         *Gönderilecek sayfanın bir xml sayfasına ait olacağını ayarlar
+         *
+         * @param string $content
+         * @param int $statusCode
+         * @return XmlResponse
+         */
+        public function xmlResponse($content = '', $statusCode = 200)
+        {
+            return new XmlResponse($content, $statusCode);
+        }
         /**
          * Static olarak sınıfı başlatır
          *
