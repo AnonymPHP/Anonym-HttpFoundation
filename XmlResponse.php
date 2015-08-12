@@ -10,11 +10,8 @@
 
 namespace Anonym\Components\HttpClient;
 
-/**
- * Class ViewResponse
- * @package Anonym\Components\HttpClient
- */
-class ViewResponse extends Response
+
+class XmlResponse
 {
 
 }

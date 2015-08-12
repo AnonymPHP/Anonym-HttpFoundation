@@ -1,7 +1,11 @@
 {
   "name": "anonym-php/anonym-httpclient",
   "type": "library",
-  "keywords" : ["http", "client", "httpclient"],
+  "keywords": [
+    "http",
+    "client",
+    "httpclient"
+  ],
   "description": "AnonymFramework Http Client Component",
   "license": "MIT",
   "authors": [
@@ -11,15 +15,15 @@
       "homepage": "http://www.gemframework.com"
     }
   ],
-  "minimum-stability" : "dev",
+  "minimum-stability": "dev",
   "require": {
     "php": ">=5.4",
     "anonym-php/anonym-cookie": "~1.2@dev",
-    "anonym-php/anonym-view":"~1.2@dev"
+    "anonym-php/anonym-view": "~1.2@dev"
   },
   "autoload": {
     "psr-4": {
-      "Anonym\\Components\\HttpClient\\": "/"
+      "Anonym\\Components\\HttpClient\\": ""
     }
   },
   "extra": {
