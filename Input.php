@@ -27,6 +27,7 @@
                 return isset($_POST[$name]);
             }
         }
+
         /**
          * $name'in $_POST içinde var olup olmadığına bakmazsızın veriyi çağırır
          *
@@ -37,6 +38,7 @@
         {
             return $_POST[$name];
         }
+
         /**
          * $_POST içinde $name'e $value' i atar;
          *
@@ -47,6 +49,7 @@
         {
             $_POST[$name] = $value;
         }
+
         /**
          * $_GET içinden $name'in değerini siler
          *
