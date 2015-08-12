@@ -1,6 +1,6 @@
 <?php
 /**
- * Bu Dosya AnonymFramework'e ait bir dosyadır.
+ * Bu Dosya AnonymFramework'e ait bir dosyadÄ±r.
  *
  * @author vahitserifsaglam <vahit.serif119@gmail.com>
  * @see http://gemframework.com
@@ -18,9 +18,9 @@ class XmlResponse extends Response implements ResponseInterface
 {
 
     /**
-     * Sınıfı başlatır ve içerik ve durum kodunu ayalar
+     * SÄ±nÄ±fÄ± baÅŸlatÄ±r ve iÃ§erik ve durum kodunu ayalar
      *
-     * @param string $content İçerik
+     * @param string $content Ä°Ã§erik
      * @param int $statusCode Durum kodu
      */
     public function __construct($content = '', $statusCode = 200)
@@ -31,7 +31,7 @@ class XmlResponse extends Response implements ResponseInterface
 
     /**
      *
-     * İçeriği gönderiri
+     * Ä°Ã§eriÄŸi gÃ¶nderiri
      *
      */
     public function send()
