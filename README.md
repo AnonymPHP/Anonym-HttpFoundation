@@ -38,11 +38,18 @@ JsonResponse
 
 ```php
 
-$json = Response::jsonResponse('Hello world', 200);
+$json = $response->jsonResponse($json, 200);
 
 ```
 
+XmlResponse
+---------------
 
+```php
+
+$xml= $reponse->xmlResponse($xml, 200);
+
+```
 Yönlendirme
 -----------
 
