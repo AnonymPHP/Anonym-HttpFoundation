@@ -15,10 +15,18 @@
      */
     class Server
     {
-        public $url;
+
         /**
+         * the address of this script
+         *
+         * @var string
+         */
+        public $url;
+
+        /**
+         * the http headers list
+         *
          * @var array
-         *  Özel arama terimleri
          */
         public $serverFilters = [
             'useragent' => 'HTTP_USER_AGENT',
@@ -31,8 +39,9 @@
             'method' => 'REQUEST_METHOD',
             'protocol' => 'SERVER_PROTOCOL'
         ];
+
         /**
-         *
+         * return the current request method
          *
          * @return string
          */
@@ -42,7 +51,7 @@
         }
 
         /**
-         * Server verilerini döndürür
+         * return the all server variables
          *
          * @return array
          */
@@ -50,7 +59,7 @@
             return $_SERVER;
         }
         /**
-         * Özel terimlerden getirme
+         * get the variable in server
          *
          * @param string $name
          * @return string
@@ -62,7 +71,7 @@
             }
         }
         /**
-         * Url i döndürür
+         * return the url
          *
          * @return string
          */
@@ -77,13 +86,15 @@
                 $url = str_replace($script, '', $this->uri);
             }
 
+            $this->url = $url;
+
             return $url;
         }
         /**
-         * Dinamik çağırma
+         * get the server variable
          *
-         * @param string $name
-         * @throws \Exception
+         * @param string $name the name of variable
+         * @throws ServerVariableException
          * @return string
          */
         public function __get($name)
@@ -99,7 +110,7 @@
                 if (isset($_SERVER[$big])) {
                     return $_SERVER[$big];
                 } else {
-                    throw new \Exception(sprintf("%s adında bir değişken bulunamadı", $name));
+                    throw new ServerVariableException(sprintf("%s adında bir değişken bulunamadı", $name));
                 }
             }
         }
