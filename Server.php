@@ -159,12 +159,10 @@
          * @param array $serverFilters
          * @return Server
          */
-        public function setServerFilters($serverFilters)
+        public function setServerFilters(array $serverFilters)
         {
             $this->serverFilters = $serverFilters;
 
             return $this;
         }
-
-
     }
