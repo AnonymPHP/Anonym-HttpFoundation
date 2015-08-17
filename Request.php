@@ -14,12 +14,20 @@
     use Anonym\Components\HttpClient\ServerHttpHeaders;
 
     /**
+     * the class of request
+     *
      * Class Request
      * @package Anonym\Components\HttpClient
      */
     class Request extends Server implements RequestHeaderInterface, ReposityInterface
     {
 
+        /**
+         * the instance of response
+         *
+         * @var Response
+         */
+        private $response;
         /**
          *  gerekli method sabitleri
          *
@@ -56,6 +64,7 @@
             $headers = (new ServerHttpHeaders())->getHeaders();
             $this->setHeaders($headers);
             $this->setCookies( (new CookieBag())->getCookies());
+            $this->setResponse( new Response());
         }
 
         /**
@@ -157,4 +166,28 @@
                 return false;
             }
         }
+
+        /**
+         * return the registered response instance
+         *
+         * @return Response
+         */
+        public function getResponse()
+        {
+            return $this->response;
+        }
+
+        /**
+         * register the response instance
+         *
+         * @param Response $response the instance of response
+         * @return Request return $this
+         */
+        public function setResponse(Response $response)
+        {
+            $this->response = $response;
+            return $this;
+        }
+
+
     }
