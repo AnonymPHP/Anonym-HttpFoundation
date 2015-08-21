@@ -182,6 +182,7 @@
          *
          * @param string $name
          * @param string $uploadDir
+         * @throws FileNotUploadedException
          * @return FileUpload
          */
         public function file($name = '', $uploadDir = UPLOAD)
@@ -191,7 +192,7 @@
                 $file =  new FileUpload($_FILES[$name], $uploadDir);
                 return $file;
             }else{
-                throw new FileNotUploadedException();
+                throw new FileNotUploadedException(sprintf('Your %s file is not uploaded yet', $name));
             }
         }
 
