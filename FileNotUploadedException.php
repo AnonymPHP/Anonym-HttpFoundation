@@ -11,6 +11,10 @@
 namespace Anonym\Components\HttpClient;
 use Exception;
 
+/**
+ * Class FileNotUploadedException
+ * @package Anonym\Components\HttpClient
+ */
 class FileNotUploadedException extends Exception
 {
 
