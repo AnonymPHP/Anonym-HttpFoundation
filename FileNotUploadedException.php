@@ -15,7 +15,9 @@ class FileNotUploadedException extends Exception
 {
 
     /**
-     * @param string $message
+     * throw the new exception
+     *
+     * @param string $message the message of exception
      */
     public function __construct($message = '')
     {
