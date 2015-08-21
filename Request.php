@@ -12,6 +12,7 @@
     use Anonym\Components\Cookie\ReposityInterface;
     use Anonym\Components\HttpClient\Server;
     use Anonym\Components\HttpClient\ServerHttpHeaders;
+    use Anonym\Components\Upload\FileUpload;
 
     /**
      * the class of request
@@ -176,5 +177,22 @@
             return $this;
         }
 
+        /**
+         * upload a file
+         *
+         * @param string $name
+         * @param string $uploadDir
+         * @return FileUpload
+         */
+        public function file($name = '', $uploadDir = UPLOAD)
+        {
+            if(isset($_FILES[$name]))
+            {
+                $file =  new FileUpload($_FILES[$name], $uploadDir);
+                return $file;
+            }else{
+                throw new FileNotUploadedException();
+            }
+        }
 
     }
