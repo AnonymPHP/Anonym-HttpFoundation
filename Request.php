@@ -153,19 +153,6 @@
             return $this->findBasePath();
         }
 
-        /**
-         * $_FILES içinden değeri döndürür
-         *
-         * @param string $name
-         * @return bool
-         */
-        public function file($name = ''){
-            if (isset($_FILES[$name])) {
-                return $_FILES[$name];
-            }else{
-                return false;
-            }
-        }
 
         /**
          * return the registered response instance
