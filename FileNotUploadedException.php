@@ -9,9 +9,16 @@
  */
 
 namespace Anonym\Components\HttpClient;
+use Exception;
 
-
-class FileNotUploadedException
+class FileNotUploadedException extends Exception
 {
 
+    /**
+     * @param string $message
+     */
+    public function __construct($message = '')
+    {
+        $this->message = $message;
+    }
 }
