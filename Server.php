@@ -9,6 +9,7 @@
 
     namespace Anonym\Components\HttpClient;
 
+    use Anonym\Components\Security\Security;
     /**
      * Class Server
      * @package Anonym\Components\HttpClient
@@ -80,9 +81,8 @@
         public function getUrl()
         {
 
-            $url = $this->get('PATH_INFO');
-
-
+            $security = new Security();
+            $url = $security->xssProtection($this->get('PATH_INFO'));
             return $url;
         }
         /**
