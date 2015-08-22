@@ -79,16 +79,9 @@
          */
         public function getUrl()
         {
-            if($path = $this->get('PATH_TRANSLATED'))
-            {
-                $url = str_replace($this->get('DOCUMENT_ROOT'),'', $path);
-            }else{
-                $script = ($this->get('PHP_SELF') !== null) ? $this->get('PHP_SELF'):$this->get('SCRIPT_NAME');
-                $script = str_replace('index.php','', $script);
-                $url = str_replace($script, '', $this->uri);
-            }
 
-            $this->url = $url;
+            $url = $this->get('PATH_INFO');
+
 
             return $url;
         }
