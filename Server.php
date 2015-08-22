@@ -68,6 +68,8 @@
         {
             if (isset($_SERVER[$name])) {
                 return $_SERVER[$name];
+            }else{
+                return false;
             }
         }
         /**
