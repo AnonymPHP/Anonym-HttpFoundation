@@ -411,7 +411,7 @@ class Response implements ResponseInterface
      */
     private function setProtocolAndCode()
     {
-        $code = $this->getStatusCode();
+        $code = intval($this->getStatusCode());
         $statusText = $this->getStatusTexts();
         if (isset($statusText[$code])) {
             $text = $statusText[$code];
