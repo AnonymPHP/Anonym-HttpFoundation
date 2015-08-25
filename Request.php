@@ -354,7 +354,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
         if (isset($this->references[$name])) {
 
             $reference = $this->references[$name];
-            return $this->get($reference) ? $this->get($reference) : false;
+            return $this->get($reference) ? $this->get($reference) : null;
         } else {
             $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
             if ($get = $this->get($big)) {
