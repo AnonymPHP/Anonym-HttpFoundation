@@ -191,7 +191,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
         if (isset($_SERVER[$name])) {
             return $_SERVER[$name];
         } else {
-            return false;
+            return null;
         }
     }
 
@@ -311,6 +311,15 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->getHost() . ':' . $port;
     }
 
+    /**
+     * get the query string
+     *
+     * @return string
+     */
+    public function getQueryString()
+    {
+        return $this->get('QUERY_STRING');
+    }
 
     /**
      * get the scheme and host url
