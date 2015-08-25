@@ -281,9 +281,14 @@ class Request implements RequestHeaderInterface, ReposityInterface
     }
 
 
+    /**
+     * get the request scheme
+     *
+     * @return string
+     */
     public function getScheme()
     {
-        return $this->
+        return $this->scheme;
     }
 
     /**
@@ -296,7 +301,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function getHttpHost()
     {
-        $scheme = $this->get('REQUEST_SCHEME');
+        $scheme = $this->getScheme();
         $port = $this->getPort();
 
         if ('http' === $scheme && $port === 80 || 'https' === $scheme && $port === 443) {
@@ -307,11 +312,14 @@ class Request implements RequestHeaderInterface, ReposityInterface
     }
 
 
+    /**
+     * get the scheme and host url
+     *
+     * @return string
+     */
     public function getSchemeAndHost()
     {
-        $host = $this->getHost();
-        $scheme = $this->get('REQUEST_SCHEME');
-
+        return $this->getScheme().'://'.$this->getHttpHost();
     }
 
     /**
