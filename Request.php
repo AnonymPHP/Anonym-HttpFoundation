@@ -70,8 +70,17 @@ class Request implements RequestHeaderInterface, ReposityInterface
         'userip'    => 'REMOTE_ADDR',
         'uri'       => 'REQUEST_URI',
         'method'    => 'REQUEST_METHOD',
-        'protocol'  => 'SERVER_PROTOCOL'
+        'protocol'  => 'SERVER_PROTOCOL',
+        'port'      => 'SERVER_PORT',
+        'scheme'    => 'REQUEST_SCHEME',
     ];
+
+    /**
+     * the url
+     *
+     * @var string
+     */
+    private $url;
 
     /**
      * Sınıfı başlatır ve header bilgilerini atar
@@ -83,17 +92,10 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->setHeaders($headers);
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
+        $this->resolveQueryUrl();
+
     }
 
-    /**
-     * Kullanıcının geldiği url i döndürür
-     *
-     * @return string
-     */
-    public function referer()
-    {
-        return $this->referer;
-    }
 
     /**
      * @return array
@@ -101,16 +103,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
     public function getCookies()
     {
         return $this->cookies;
-    }
-
-    /**
-     * Kullanıcının giriş yaptığı aygıtın bilgilerini döndürür
-     *
-     * @return string
-     */
-    public function useragent()
-    {
-        return $this->useragent;
     }
 
     /**
@@ -124,16 +116,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this;
     }
 
-
-    /**
-     * Kullanıcının bulunduğu host u döndürür
-     *
-     * @return string
-     */
-    public function host()
-    {
-        return $this->host;
-    }
 
     /**
      * Header bilgilerini döndürür
@@ -236,6 +218,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $ip;
     }
 
+
     /**
      * add a new header
      *
@@ -261,6 +244,88 @@ class Request implements RequestHeaderInterface, ReposityInterface
 
 
     /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * resolve the url
+     */
+    private function resolveQueryUrl()
+    {
+
+    }
+
+
+    /**
+     * get the port
+     *
+     * @return string
+     */
+    public function getPort()
+    {
+        return $this->port;
+    }
+
+    /**
+     * get the host
+     *
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+
+    public function getScheme()
+    {
+        return $this->
+    }
+
+    /**
+     * get the http host
+     *
+     * example : localhost
+     * example : localhot:443
+     *
+     * @return string
+     */
+    public function getHttpHost()
+    {
+        $scheme = $this->get('REQUEST_SCHEME');
+        $port = $this->getPort();
+
+        if ('http' === $scheme && $port === 80 || 'https' === $scheme && $port === 443) {
+            return $this->getHost();
+        }
+
+        return $this->getHost() . ':' . $port;
+    }
+
+
+    public function getSchemeAndHost()
+    {
+        $host = $this->getHost();
+        $scheme = $this->get('REQUEST_SCHEME');
+
+    }
+
+    /**
+     * @param string $url
+     * @return Request
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+
+    /**
      * get the server variable
      *
      * @param string $name the name of variable
@@ -282,6 +347,4 @@ class Request implements RequestHeaderInterface, ReposityInterface
             }
         }
     }
-
-
 }
