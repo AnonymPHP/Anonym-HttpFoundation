@@ -288,7 +288,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $scheme = $this->getScheme();
         $port = $this->getPort();
 
-        if ('http' === $scheme && $port === 80 || 'https' === $scheme && $port === 443) {
+        if ('http' === $scheme && $port === '80' || 'https' === $scheme && $port === '443') {
             return $this->getHost();
         }
 
