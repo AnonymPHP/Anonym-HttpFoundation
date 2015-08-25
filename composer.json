@@ -1,12 +1,14 @@
 {
-  "name": "anonym-php/anonym-httpclient",
+  "name": "anonym-php/anonym-httpfoundation",
   "type": "library",
   "keywords": [
     "http",
     "client",
-    "httpclient"
+    "http",
+    "foundation",
+    "http-foundation"
   ],
-  "description": "AnonymFramework Http Client Component",
+  "description": "AnonymFramework Http Foundation Component",
   "license": "MIT",
   "authors": [
     {
