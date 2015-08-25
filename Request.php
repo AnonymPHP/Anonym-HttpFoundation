@@ -30,10 +30,8 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @var Response
      */
     private $response;
-    /**
-     *  gerekli method sabitleri
-     *
-     */
+
+
     const METHOD_HEAD = 'HEAD';
     const METHOD_GET = 'GET';
     const METHOD_POST = 'POST';
@@ -280,28 +278,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->method;
     }
 
-    /**
-     * Sayfanın yürütüldüğü url 'i bulur
-     * @return string
-     */
-    public function findBasePath()
-    {
-        $type = $this->get('REQUEST_SCHEME');
-        return sprintf("%s::%s%s", $type, $this->host, $this->uri);
-    }
-
-    /**
-     * return the url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-
-        $security = new Security();
-        $url = $security->xssProtection($this->get('PATH_INFO'));
-        return $url;
-    }
     /**
      * get the server variable
      *
