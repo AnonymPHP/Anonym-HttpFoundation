@@ -75,12 +75,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         'scheme'    => 'REQUEST_SCHEME',
     ];
 
-    /**
-     * the url
-     *
-     * @var string
-     */
-    private $url;
 
     /**
      * Sınıfı başlatır ve header bilgilerini atar
@@ -92,8 +86,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->setHeaders($headers);
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
-        $this->resolveQueryUrl();
-
     }
 
 
@@ -251,14 +243,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->url;
     }
 
-    /**
-     * resolve the url
-     */
-    private function resolveQueryUrl()
-    {
-
-    }
-
 
     /**
      * get the port
@@ -330,17 +314,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
     {
         return $this->getScheme().'://'.$this->getHttpHost();
     }
-
-    /**
-     * @param string $url
-     * @return Request
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-        return $this;
-    }
-
 
     /**
      * get the server variable
