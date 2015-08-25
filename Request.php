@@ -58,6 +58,23 @@
         private $cookies;
 
         /**
+         * the http headers list
+         *
+         * @var array
+         */
+        private $references = [
+            'useragent' => 'HTTP_USER_AGENT',
+            'referer' => 'HTTP_REFERER',
+            'host' => 'HTTP_HOST',
+            'reditect' => 'REDIRECT_URL',
+            'serverip' => 'SERVER_ADDR',
+            'userip' => 'REMOTE_ADDR',
+            'uri' => 'REQUEST_URI',
+            'method' => 'REQUEST_METHOD',
+            'protocol' => 'SERVER_PROTOCOL'
+        ];
+
+        /**
          * Sınıfı başlatır ve header bilgilerini atar
          */
         public function __construct(){
@@ -195,5 +212,31 @@
                 throw new FileNotUploadedException(sprintf('Your %s file is not uploaded yet', $name));
             }
         }
+
+        /**
+         * get the server variable
+         *
+         * @param string $name the name of variable
+         * @throws ServerVariableException
+         * @return string
+         */
+        public function __get($name)
+        {
+            if (isset($this->references[$name])) {
+                if (isset($_SERVER[$this->references[$name]])) {
+                    return $_SERVER[$this->references[$name]];
+                } else {
+                    return false;
+                }
+            } else {
+                $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
+                if (isset($_SERVER[$big])) {
+                    return $_SERVER[$big];
+                } else {
+                    throw new ServerVariableException(sprintf("%s Not found!", $name));
+                }
+            }
+        }
+
 
     }
