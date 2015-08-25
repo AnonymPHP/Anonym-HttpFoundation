@@ -59,20 +59,7 @@
         public function getServer(){
             return $_SERVER;
         }
-        /**
-         * get the variable in server
-         *
-         * @param string $name
-         * @return string
-         */
-        public function get($name = 'HTTP_HOST')
-        {
-            if (isset($_SERVER[$name])) {
-                return $_SERVER[$name];
-            }else{
-                return false;
-            }
-        }
+
         /**
          * return the url
          *

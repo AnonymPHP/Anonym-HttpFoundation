@@ -214,6 +214,21 @@
         }
 
         /**
+         * get the variable in server
+         *
+         * @param string $name
+         * @return string
+         */
+        public function get($name = 'HTTP_HOST')
+        {
+            if (isset($_SERVER[$name])) {
+                return $_SERVER[$name];
+            }else{
+                return false;
+            }
+        }
+
+        /**
          * get the server variable
          *
          * @param string $name the name of variable
@@ -223,15 +238,13 @@
         public function __get($name)
         {
             if (isset($this->references[$name])) {
-                if (isset($_SERVER[$this->references[$name]])) {
-                    return $_SERVER[$this->references[$name]];
-                } else {
-                    return false;
-                }
+
+                $reference = $this->references[$name];
+                return $this->get($reference) ? $this->get($reference) : false;
             } else {
                 $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
-                if (isset($_SERVER[$big])) {
-                    return $_SERVER[$big];
+                if ($get = $this->get($big)) {
+                    return $get;
                 } else {
                     throw new ServerVariableException(sprintf("%s Not found!", $name));
                 }
