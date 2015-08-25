@@ -10,7 +10,10 @@
 
 namespace Anonym\Components\HttpClient;
 
-
+/**
+ * Class RequestFactory
+ * @package Anonym\Components\HttpClient
+ */
 class RequestFactory
 {
 
