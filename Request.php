@@ -90,7 +90,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      *
      * @return string
      */
-    public function back()
+    public function referer()
     {
         return $this->referer;
     }
@@ -124,15 +124,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this;
     }
 
-    /**
-     * Kullanıcının şuanda aktif olarak buluğu url i döndürür
-     *
-     * @return string
-     */
-    public function url()
-    {
-        return $this->getUrl();
-    }
 
     /**
      * Kullanıcının bulunduğu host u döndürür
@@ -164,16 +155,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
     {
         $this->headers = $headers;
         return $this;
-    }
-
-    /**
-     * Ana yolu dönderir
-     *
-     * @return string
-     */
-    public function findBaseUri()
-    {
-        return $this->findBasePath();
     }
 
 
@@ -277,6 +258,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
     {
         return $this->method;
     }
+
 
     /**
      * get the server variable
