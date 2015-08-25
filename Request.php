@@ -240,7 +240,7 @@ class Request extends Server implements RequestHeaderInterface, ReposityInterfac
      *
      * @return string
      */
-    public function getIp()
+    public function ip()
     {
         if (getenv("HTTP_CLIENT_IP")) {
             $ip = getenv("HTTP_CLIENT_IP");
@@ -270,6 +270,38 @@ class Request extends Server implements RequestHeaderInterface, ReposityInterfac
         return $this;
     }
 
+    /**
+     * return the current request method
+     *
+     * @return string
+     */
+    public function method()
+    {
+        return $this->method;
+    }
+
+    /**
+     * Sayfanın yürütüldüğü url 'i bulur
+     * @return string
+     */
+    public function findBasePath()
+    {
+        $type = $this->get('REQUEST_SCHEME');
+        return sprintf("%s::%s%s", $type, $this->host, $this->uri);
+    }
+
+    /**
+     * return the url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+
+        $security = new Security();
+        $url = $security->xssProtection($this->get('PATH_INFO'));
+        return $url;
+    }
     /**
      * get the server variable
      *
