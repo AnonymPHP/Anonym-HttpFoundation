@@ -21,7 +21,7 @@ use Anonym\Components\Upload\FileUpload;
  * Class Request
  * @package Anonym\Components\HttpClient
  */
-class Request extends Server implements RequestHeaderInterface, ReposityInterface
+class Request implements RequestHeaderInterface, ReposityInterface
 {
 
     /**
