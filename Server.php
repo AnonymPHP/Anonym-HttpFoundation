@@ -46,9 +46,7 @@ class Server
     public function get($name = 'HTTP_HOST')
     {
         if (isset($this->references[$name])) {
-
-            $reference = $this->references[$name];
-            return $this->get($reference) ? $this->get($reference) : null;
+            return isset($this->references[$name]) ? $_SERVER[$this->references[$name]]: null;
         } else {
             $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
             if ($get = $this->get($big)) {
