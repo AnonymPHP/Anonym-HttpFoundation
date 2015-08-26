@@ -239,9 +239,19 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->findAndGetCalledUrl();
     }
 
+    /**
+     *
+     * return the called url
+     *
+     * @return string
+     */
     private function findAndGetCalledUrl()
     {
+        if(null !== $path = $this->server->get('PATH_INFO')){
+            return $path;
+        }
 
+        return '';
     }
 
     /**
