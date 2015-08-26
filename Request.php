@@ -56,24 +56,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     private $cookies;
 
-    /**
-     * the http headers list
-     *
-     * @var array
-     */
-    private $references = [
-        'useragent' => 'HTTP_USER_AGENT',
-        'referer'   => 'HTTP_REFERER',
-        'host'      => 'HTTP_HOST',
-        'reditect'  => 'REDIRECT_URL',
-        'serverip'  => 'SERVER_ADDR',
-        'userip'    => 'REMOTE_ADDR',
-        'uri'       => 'REQUEST_URI',
-        'method'    => 'REQUEST_METHOD',
-        'protocol'  => 'SERVER_PROTOCOL',
-        'port'      => 'SERVER_PORT',
-        'scheme'    => 'REQUEST_SCHEME',
-    ];
 
 
     /**
@@ -169,21 +151,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
             return $file;
         } else {
             throw new FileNotUploadedException(sprintf('Your %s file is not uploaded yet', $name));
-        }
-    }
-
-    /**
-     * get the variable in server
-     *
-     * @param string $name
-     * @return string
-     */
-    public function get($name = 'HTTP_HOST')
-    {
-        if (isset($_SERVER[$name])) {
-            return $_SERVER[$name];
-        } else {
-            return null;
         }
     }
 
