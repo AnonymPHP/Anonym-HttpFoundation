@@ -40,7 +40,6 @@ class Server
      * get the variable in server
      *
      * @param string $name
-     * @throws ServerVariableException
      * @return string
      */
     public function get($name = 'HTTP_HOST')
