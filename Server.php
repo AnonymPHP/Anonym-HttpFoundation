@@ -49,8 +49,24 @@ class Server
     }
 
 
+    public function remove($name = '')
+    {
+        if(isset($_SERVER[$name])){
+            unset($_SERVER[$name]);
+        }
+
+    }
+
+    /**
+     * add a new variable
+     *
+     * @param string $name
+     * @param string $value
+     * @return $this
+     */
     public function add($name = '', $value = '')
     {
-
+        $_SERVER[$name] = $value;
+        return $this;
     }
 }
