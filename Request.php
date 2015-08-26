@@ -299,7 +299,16 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->server->get('QUERY_STRING');
     }
 
-
+    /**
+     * get the request uri
+     *
+     *
+     * @return string
+     */
+    public function getRequestUri()
+    {
+        return $this->uri;
+    }
     /**
      * check the url
      *
@@ -336,6 +345,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
     {
         return $this->getScheme() . '://' . $this->getHttpHost();
     }
+
 
     /**
      * get the server variable with references or directly
