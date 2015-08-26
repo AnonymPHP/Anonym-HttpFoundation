@@ -296,7 +296,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function getQueryString()
     {
-        return $this->get('QUERY_STRING');
+        return $this->server->get('QUERY_STRING');
     }
 
 
@@ -346,6 +346,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function __get($name)
     {
-        return $this->getServer()->get($name);
+        return $this->server->get($name);
     }
 }
