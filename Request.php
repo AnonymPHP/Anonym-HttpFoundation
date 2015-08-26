@@ -319,6 +319,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function __get($name)
     {
-
+        return $this->getServer()->get($name);
     }
 }
