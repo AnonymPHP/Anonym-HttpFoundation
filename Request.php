@@ -309,6 +309,21 @@ class Request implements RequestHeaderInterface, ReposityInterface
     {
         return $this->uri;
     }
+
+    /**
+     * find the scheme and request uri
+     *
+     * @return string
+     */
+    public function getBaseUri()
+    {
+        if(null !== $qs = $this->getQueryString())
+        {
+            $qs = '?'.$qs;
+        }
+
+        return $this->getSchemeAndHost().$this->getRequestUri().$qs;
+    }
     /**
      * check the url
      *
