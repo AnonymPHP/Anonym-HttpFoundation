@@ -39,7 +39,7 @@ class RequestHeaders implements RequestHeadersInterface
     }
 
     /**
-     * Server verilerini döndürür
+     * return the server variables
      *
      * @return mixed
      */
