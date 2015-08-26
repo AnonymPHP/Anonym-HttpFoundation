@@ -10,7 +10,10 @@
 
 namespace Anonym\Components\HttpClient;
 
-
+/**
+ * Class Server
+ * @package Anonym\Components\HttpClient
+ */
 class Server
 {
 
