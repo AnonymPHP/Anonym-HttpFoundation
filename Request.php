@@ -74,6 +74,27 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->setHeaders($headers);
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
+        $this->setServer( new Server());
+    }
+
+    /**
+     * @return \Anonym\Components\HttpClient\Server
+     */
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    /**
+     * register the server instance
+     *
+     * @param \Anonym\Components\HttpClient\Server $server
+     * @return Request
+     */
+    public function setServer(Server $server)
+    {
+        $this->server = $server;
+        return $this;
     }
 
 
