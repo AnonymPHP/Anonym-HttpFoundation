@@ -57,6 +57,12 @@ class Request implements RequestHeaderInterface, ReposityInterface
     private $cookies;
 
 
+    /**
+     * the instance of server
+     *
+     * @var Server
+     */
+    private $server;
 
     /**
      * Sınıfı başlatır ve header bilgilerini atar
@@ -69,6 +75,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
     }
+
 
 
     /**

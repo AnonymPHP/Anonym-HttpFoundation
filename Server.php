@@ -49,12 +49,19 @@ class Server
     }
 
 
+    /**
+     * remova a server variable
+     *
+     * @param string $name
+     * @return $this
+     */
     public function remove($name = '')
     {
         if(isset($_SERVER[$name])){
             unset($_SERVER[$name]);
         }
 
+        return $this;
     }
 
     /**
