@@ -230,13 +230,19 @@ class Request implements RequestHeaderInterface, ReposityInterface
 
 
     /**
+     * find and return called url
+     *
      * @return string
      */
     public function getUrl()
     {
-        return $this->url;
+        $this->findAndGetCalledUrl();
     }
 
+    private function findAndGetCalledUrl()
+    {
+
+    }
 
     /**
      * get the port
@@ -317,13 +323,13 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function getBaseUri()
     {
-        if(null !== $qs = $this->getQueryString())
-        {
-            $qs = '?'.$qs;
+        if (null !== $qs = $this->getQueryString()) {
+            $qs = '?' . $qs;
         }
 
-        return $this->getSchemeAndHost().$this->getRequestUri().$qs;
+        return $this->getSchemeAndHost() . $this->getRequestUri() . $qs;
     }
+
     /**
      * check the url
      *
