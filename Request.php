@@ -308,7 +308,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function isAvailableUrl($url)
     {
-
+        return filter_var($url, FILTER_VALIDATE_URL);
     }
 
     /**
