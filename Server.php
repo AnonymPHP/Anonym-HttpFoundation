@@ -40,14 +40,22 @@ class Server
      * get the variable in server
      *
      * @param string $name
+     * @throws ServerVariableException
      * @return string
      */
     public function get($name = 'HTTP_HOST')
     {
-        if (isset($_SERVER[$name])) {
-            return $_SERVER[$name];
+        if (isset($this->references[$name])) {
+
+            $reference = $this->references[$name];
+            return $this->get($reference) ? $this->get($reference) : null;
         } else {
-            return null;
+            $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
+            if ($get = $this->get($big)) {
+                return $get;
+            } else {
+                throw new ServerVariableException(sprintf("%s Not found!", $name));
+            }
         }
     }
 
