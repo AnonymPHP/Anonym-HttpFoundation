@@ -319,17 +319,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function __get($name)
     {
-        if (isset($this->references[$name])) {
 
-            $reference = $this->references[$name];
-            return $this->get($reference) ? $this->get($reference) : null;
-        } else {
-            $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
-            if ($get = $this->get($big)) {
-                return $get;
-            } else {
-                throw new ServerVariableException(sprintf("%s Not found!", $name));
-            }
-        }
     }
 }
