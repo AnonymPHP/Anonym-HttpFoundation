@@ -46,15 +46,17 @@ class Server
     public function get($name = 'HTTP_HOST')
     {
         if (isset($this->references[$name])) {
-            return isset($this->references[$name]) ? $_SERVER[$this->references[$name]]: null;
+            $return =  isset($this->references[$name]) ? $_SERVER[$this->references[$name]]: null;
         } else {
             $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
-            if ($get = $this->get($big)) {
-                return $get;
+            if (isset($_SERVER[$big])) {
+                $return =  $_SERVER[$big];
             } else {
                 throw new ServerVariableException(sprintf("%s Not found!", $name));
             }
         }
+
+        return $return === '' ? null : $return;
     }
 
 
