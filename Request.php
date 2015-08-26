@@ -300,6 +300,18 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->get('QUERY_STRING');
     }
 
+
+    /**
+     * check the url
+     *
+     * @param string $url
+     * @return bool
+     */
+    public function isAvailableUrl($url = '')
+    {
+
+    }
+
     /**
      * get the scheme and host url
      *
@@ -311,7 +323,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
     }
 
     /**
-     * get the server variable
+     * get the server variable with references or directly
      *
      * @param string $name the name of variable
      * @throws ServerVariableException
