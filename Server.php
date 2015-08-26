@@ -45,20 +45,33 @@ class Server
      */
     public function get($name = 'HTTP_HOST')
     {
-        if (isset($this->references[$name])) {
-            $return =  isset($this->references[$name]) ? $_SERVER[$this->references[$name]]: null;
-        } else {
-            $big = mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
-            if (isset($_SERVER[$big])) {
-                $return =  $_SERVER[$big];
-            } else {
-                throw new ServerVariableException(sprintf("%s Not found!", $name));
-            }
-        }
+        $name = isset($this->references[$name]) ? $this->references[$name]: $this->resolveCase($name);
 
-        return $return === '' ? null : $return;
+        return $this->has($name) ? $_SERVER[$name] : false;
+
     }
 
+    /**
+     * resolve the case type
+     *
+     * @param string $name
+     * @return string
+     */
+    private function resolveCase($name)
+    {
+        return mb_convert_case($name, MB_CASE_UPPER, 'UTF-8');
+    }
+
+    /**
+     * check the variable
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function has($name)
+    {
+        return isset($_SERVER[$name]);
+    }
 
     /**
      * remova a server variable
