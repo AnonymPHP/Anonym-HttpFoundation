@@ -223,7 +223,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      *
      * @return string
      */
-    public function method()
+    public function getMethod()
     {
         return $this->method;
     }
