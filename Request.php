@@ -74,7 +74,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->setHeaders($headers);
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
-        $this->setServer( new Server());
+        $this->setServer(new Server());
     }
 
     /**
@@ -96,7 +96,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->server = $server;
         return $this;
     }
-
 
 
     /**
@@ -307,9 +306,25 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @param string $url
      * @return bool
      */
-    public function isAvailableUrl($url = '')
+    public function isAvailableUrl($url)
     {
 
+    }
+
+    /**
+     * set the default php locale
+     *
+     * @param string $locale
+     * @return $this
+     */
+    public function setDefaultLocale($locale)
+    {
+        try {
+            if (class_exists('Locale', false)) {
+                \Locale::setDefault($locale);
+            }
+        } catch (\Exception $e) {
+        }
     }
 
     /**
@@ -319,7 +334,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function getSchemeAndHost()
     {
-        return $this->getScheme().'://'.$this->getHttpHost();
+        return $this->getScheme() . '://' . $this->getHttpHost();
     }
 
     /**
