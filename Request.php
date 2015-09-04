@@ -378,4 +378,14 @@ class Request implements RequestHeaderInterface, ReposityInterface
     {
         return $this->server->get($name);
     }
+
+    /**
+     * generate an json string
+     *
+     * @param mixed $content
+     * @return string
+     */
+    public function json($content = null){
+        return json_encode($content);
+    }
 }
