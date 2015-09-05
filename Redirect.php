@@ -11,8 +11,16 @@
 
 namespace Anonym\Components\HttpClient;
 
-
+/**
+ * Class Redirect
+ * @package Anonym\Components\HttpClient
+ */
 class Redirect
 {
+
+    public function to($url = '', $time = 0)
+    {
+        $redirect = new Red
+    }
 
 }

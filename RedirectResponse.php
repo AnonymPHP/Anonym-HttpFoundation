@@ -14,7 +14,7 @@
      * Class Redirect
      * @package Anonym\Components\HttpClient
      */
-    class Redirect extends Response implements ResponseInterface
+    class RedirectResponse extends Response implements ResponseInterface
     {
 
         /**
