@@ -274,6 +274,15 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->scheme;
     }
 
+
+    /**
+     * get the http referer
+     *
+     * @return string
+     */
+    public function back(){
+        return $this->referer;
+    }
     /**
      * get the http host
      *
