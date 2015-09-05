@@ -18,9 +18,25 @@ namespace Anonym\Components\HttpClient;
 class Redirect
 {
 
+    /**
+     * redirect user to somewhere else
+     *
+     * @param string $url
+     * @param int $time
+     */
     public function to($url = '', $time = 0)
     {
-        $redirect = new Red
+        $redirect = new RedirectResponse($url, $time);
+        $redirect->send();
     }
 
+    /**
+     * redirect user to it referer url
+     *
+     * @param int $time
+     */
+    public function back($time = 0){
+        $redirect = new RedirectResponse((new Request())->back(), $time);
+        $redirect->send();
+    }
 }
