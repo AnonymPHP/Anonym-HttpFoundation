@@ -388,4 +388,13 @@ class Request implements RequestHeaderInterface, ReposityInterface
     public function json($content = null){
         return json_encode($content);
     }
+
+    /**
+     * check request, if made with ajax return true
+     *
+     * @return bool
+     */
+    public function isAjax(){
+        return filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH') === 'xmlhttprequest';
+    }
 }
