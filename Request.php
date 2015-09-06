@@ -422,6 +422,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @return bool
      */
     public function isAjax(){
-        return filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH') === 'xmlhttprequest';
+        return strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest';
     }
 }
