@@ -65,6 +65,12 @@ class Request implements RequestHeaderInterface, ReposityInterface
     private $server;
 
     /**
+     *
+     *
+     * @var array
+     */
+    private $segments;
+    /**
      * Sınıfı başlatır ve header bilgilerini atar
      */
     public function __construct()
@@ -75,6 +81,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
         $this->setServer(new Server());
+        $this->segments = explode('/', $this->getUrl());
     }
 
     /**
@@ -382,8 +389,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @return string|bool
      */
     public function segment($segment){
-        $url = $this->getUrl();
-        $segments = explode('/', $segment);
+        $segments = $this->segments;
 
         return isset($segments[$segment-1]) ? $segments[$segment-1]:false;
     }
