@@ -11,7 +11,10 @@
 
 namespace Anonym\Components\HttpClient;
 
-
+/**
+ * Class Query
+ * @package Anonym\Components\HttpClient
+ */
 class Query
 {
     /**
