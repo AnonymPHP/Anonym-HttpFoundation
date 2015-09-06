@@ -382,7 +382,10 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @return string|bool
      */
     public function segment($segment){
-        
+        $url = $this->getUrl();
+        $segments = explode('/', $segment);
+
+        return isset($segments[$segment-1]) ? $segments[$segment-1]:false;
     }
 
     /**
