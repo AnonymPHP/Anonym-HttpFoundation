@@ -375,6 +375,15 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->getScheme() . '://' . $this->getHttpHost();
     }
 
+    /**
+     * get url segment
+     *
+     * @param int $segment
+     * @return string|bool
+     */
+    public function segment($segment){
+        
+    }
 
     /**
      * get the server variable with references or directly
