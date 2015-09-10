@@ -356,6 +356,11 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return filter_var($url, FILTER_VALIDATE_URL);
     }
 
+
+    public function all()
+    {
+        return Input::getAll();
+    }
     /**
      * set the default php locale
      *
