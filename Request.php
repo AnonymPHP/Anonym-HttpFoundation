@@ -14,6 +14,7 @@ use Anonym\Components\Cookie\ReposityInterface;
 use Anonym\Components\HttpClient\Server;
 use Anonym\Components\HttpClient\ServerHttpHeaders;
 use Anonym\Components\Upload\FileUpload;
+use Anonym\Components\Security\Validation as Validate;
 
 /**
  * the class of request
@@ -70,10 +71,15 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @var array
      */
     private $segments;
+
+    /**
+     * @var Validate
+     */
+    private $validate;
     /**
      * Sınıfı başlatır ve header bilgilerini atar
      */
-    public function __construct()
+    public function __construct(Validate $validation = null)
     {
 
         $headers = (new ServerHttpHeaders())->getHeaders();
@@ -81,8 +87,48 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
         $this->setServer(new Server());
+        $this->setValidate($validation);
         $this->segments = explode('/', $this->getUrl());
+
     }
+
+    /**
+     * @return array
+     */
+    public function getSegments()
+    {
+        return $this->segments;
+    }
+
+    /**
+     * @param array $segments
+     * @return Request
+     */
+    public function setSegments($segments)
+    {
+        $this->segments = $segments;
+        return $this;
+    }
+
+    /**
+     * @return Validate
+     */
+    public function getValidate()
+    {
+        return $this->validate;
+    }
+
+    /**
+     * @param Validate $validate
+     * @return Request
+     */
+    public function setValidate(Validate $validate)
+    {
+        $this->validate = $validate;
+        return $this;
+    }
+
+
 
     /**
      * @return \Anonym\Components\HttpClient\Server
@@ -357,6 +403,11 @@ class Request implements RequestHeaderInterface, ReposityInterface
     }
 
 
+    /**
+     * get all input variables
+     *
+     * @return mixed
+     */
     public function all()
     {
         return Input::getAll();
