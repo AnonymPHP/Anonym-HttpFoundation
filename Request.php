@@ -122,7 +122,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @param Validate $validate
      * @return Request
      */
-    public function setValidate(Validate $validate)
+    public function setValidate(Validate $validate = null)
     {
         $this->validate = $validate;
         return $this;
