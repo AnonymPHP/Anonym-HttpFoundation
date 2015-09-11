@@ -384,7 +384,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function getBaseUri()
     {
-        if (null !== $qs = $this->getQueryString()) {
+        if ('' !== $qs = $this->getQueryString()) {
             $qs = '?' . $qs;
         }
 
