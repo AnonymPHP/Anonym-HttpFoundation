@@ -76,6 +76,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @var Validate
      */
     private $validate;
+
     /**
      * Sınıfı başlatır ve header bilgilerini atar
      */
@@ -127,7 +128,6 @@ class Request implements RequestHeaderInterface, ReposityInterface
         $this->validate = $validate;
         return $this;
     }
-
 
 
     /**
@@ -289,7 +289,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
      */
     public function getUrl()
     {
-        if(null !== $path = $this->server->get('PATH_INFO')){
+        if (null !== $path = $this->server->get('PATH_INFO')) {
             return $path;
         }
 
@@ -333,9 +333,11 @@ class Request implements RequestHeaderInterface, ReposityInterface
      *
      * @return string
      */
-    public function back(){
+    public function back()
+    {
         return $this->referer;
     }
+
     /**
      * get the http host
      *
@@ -391,6 +393,12 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->getSchemeAndHost() . $this->getRequestUri() . $qs;
     }
 
+
+    public function getBaseWithoutQuery()
+    {
+        return $this->getSchemeAndHost() . $this->getRequestUri();
+    }
+
     /**
      * check the url
      *
@@ -412,6 +420,7 @@ class Request implements RequestHeaderInterface, ReposityInterface
     {
         return Input::getAll();
     }
+
     /**
      * set the default php locale
      *
@@ -444,10 +453,11 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @param int $segment
      * @return string|bool
      */
-    public function segment($segment){
+    public function segment($segment)
+    {
         $segments = $this->segments;
 
-        return isset($segments[$segment-1]) ? $segments[$segment-1]:false;
+        return isset($segments[$segment - 1]) ? $segments[$segment - 1] : false;
     }
 
     /**
@@ -468,7 +478,8 @@ class Request implements RequestHeaderInterface, ReposityInterface
      * @param mixed $content
      * @return string
      */
-    public function json($content = null){
+    public function json($content = null)
+    {
         return json_encode($content);
     }
 
@@ -477,7 +488,8 @@ class Request implements RequestHeaderInterface, ReposityInterface
      *
      * @return bool
      */
-    public function isAjax(){
-        return strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest' ? true:false;
+    public function isAjax()
+    {
+        return strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest' ? true : false;
     }
 }
