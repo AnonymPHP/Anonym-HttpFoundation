@@ -393,7 +393,11 @@ class Request implements RequestHeaderInterface, ReposityInterface
         return $this->getSchemeAndHost() . $this->getRequestUri() . $qs;
     }
 
-
+    /**
+     * find base url without query string
+     *
+     * @return string
+     */
     public function getBaseWithoutQuery()
     {
         return $this->getSchemeAndHost() . $this->getRequestUri();
