@@ -10,6 +10,7 @@
 
 
 namespace Anonym\Components\HttpClient;
+use Anonym\Components\Route\AsCollector;
 
 /**
  * Class Redirect
@@ -41,6 +42,12 @@ class Redirect
     }
 
     public function route($name = ''){
+        $routes = AsCollector::getAs();
 
+        if (isset($routes[$name])) {
+            $this->to($routes[$name]);
+        }else{
+            throw new RouteNotFoundException(sprintf('%s Route Not Found'));
+        }
     }
 }
