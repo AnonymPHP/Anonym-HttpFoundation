@@ -41,6 +41,14 @@ class Redirect
         $redirect->send();
     }
 
+
+
+    /**
+     * redirect to a route
+     *
+     * @param string $name
+     * @throws RouteNotFoundException
+     */
     public function route($name = ''){
         $routes = AsCollector::getAs();
 
