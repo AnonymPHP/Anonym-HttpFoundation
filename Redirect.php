@@ -39,4 +39,8 @@ class Redirect
         $redirect = new RedirectResponse((new Request())->back(), $time);
         $redirect->send();
     }
+
+    public function route($name = ''){
+
+    }
 }
