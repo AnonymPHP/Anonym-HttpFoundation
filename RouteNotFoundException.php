@@ -9,9 +9,23 @@
  */
 
 namespace Anonym\Components\HttpClient;
+use Exception;
 
-
-class RouteNotFoundException
+/**
+ * Class RouteNotFoundException
+ * @package Anonym\Components\HttpClient
+ */
+class RouteNotFoundException extends Exception
 {
+
+    /**
+     * create a new instance
+     *
+     * @param string $message
+     */
+    public function __construct($message = '')
+    {
+        $this->message = $message;
+    }
 
 }
