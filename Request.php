@@ -22,7 +22,7 @@ use Anonym\Components\Security\Validation as Validate;
  * Class Request
  * @package Anonym\Components\HttpClient
  */
-class Request implements RequestHeaderInterface, ReposityInterface
+class Request implements ReposityInterface
 {
 
     /**
