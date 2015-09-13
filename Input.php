@@ -13,7 +13,7 @@ namespace Anonym\Components\HttpClient;
  * Class Input
  * @package Anonym\Components\HttpClient
  */
-class Input implements InputInterface
+class Input
 {
     /**
      * $name' e atanan veriye göre $_POST da veri varmı yokmu onu kontrol eder
