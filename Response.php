@@ -474,7 +474,7 @@ class Response implements ResponseInterface
      * @param int $statusCode
      * @return Response
      */
-    public  static function make($content = '', $statusCode = 200)
+    public static function make($content = '', $statusCode = 200)
     {
         return new static($content, $statusCode);
     }
