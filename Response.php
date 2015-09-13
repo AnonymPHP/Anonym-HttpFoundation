@@ -357,13 +357,15 @@ class Response implements ResponseInterface
             $this->sendHeaders();
             $this->sendContent();
 
+
             return true;
         } else {
             throw new HttpResponseException(
-                'Başlıklar daha önceden gönderilmiş,
-                tekrardan başlık gönderemezsiniz'
+                'Headers already sended, you cant send them agein'
             );
         }
+
+
     }
 
     /**
