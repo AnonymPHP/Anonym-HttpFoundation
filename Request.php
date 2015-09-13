@@ -496,4 +496,29 @@ class Request implements ReposityInterface
     {
         return strtolower(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest' ? true : false;
     }
+
+    /**
+     * Get a subset of the items from the input data.
+     *
+     * @param array $keys
+     * @return array
+     */
+    public function only($keys = [])
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+
+        $all = $this->all();
+
+        $result = [];
+
+        // now we will register keys to result variable,
+        // each of variables must be exists, if they are not exists
+        // null will be add to result
+        foreach($keys as $key){
+            $result[$key] = isset($all[$key]) ? $all[$key] : null;
+        }
+
+        return $result;
+
+    }
 }
