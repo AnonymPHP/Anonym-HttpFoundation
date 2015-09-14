@@ -67,7 +67,7 @@ class Redirect
      * @return $this
      */
     public function withErrors($errors = []){
-        error()->setErrors($errors)->run();
+        errorr()->setErrors($errors)->run();
 
         return $this;
     }
