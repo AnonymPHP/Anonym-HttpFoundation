@@ -58,4 +58,17 @@ class Redirect
             throw new RouteNotFoundException(sprintf('%s Route Not Found'));
         }
     }
+
+
+    /**
+     * register errors
+     *
+     * @param array $errors
+     * @return $this
+     */
+    public function withErrors($errors = []){
+        error()->setErrors($errors)->run();
+
+        return $this;
+    }
 }
