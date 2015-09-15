@@ -48,14 +48,14 @@ class Request implements ReposityInterface
      *
      * @var array
      */
-    private $headers;
+    private $headers = [];
 
     /**
      * Cookileri döndürür
      *
      * @var array
      */
-    private $cookies;
+    private $cookies = [];
 
 
     /**
@@ -70,7 +70,7 @@ class Request implements ReposityInterface
      *
      * @var array
      */
-    private $segments;
+    private $segments = [];
 
     /**
      * @var Validate

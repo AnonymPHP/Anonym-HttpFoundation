@@ -33,7 +33,7 @@ class Response implements ResponseInterface
      *
      * @var string
      */
-    private $protocolVersion;
+    private $protocolVersion = '';
 
     /**
      * Kullanılacar karekter seti
@@ -121,7 +121,7 @@ class Response implements ResponseInterface
      *
      * @var null|string
      */
-    private $content = null;
+    private $content = '';
     /**
      * Durum Kodunu tutar
      *
@@ -135,7 +135,7 @@ class Response implements ResponseInterface
      *
      * @var array
      */
-    private $headers;
+    private $headers = [];
 
 
     /**
