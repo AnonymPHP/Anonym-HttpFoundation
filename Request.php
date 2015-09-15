@@ -324,7 +324,7 @@ class Request implements ReposityInterface
      */
     public function getScheme()
     {
-        return $this->scheme;
+        return $this->scheme ?: 'http';
     }
 
 
