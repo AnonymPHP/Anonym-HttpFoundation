@@ -33,7 +33,7 @@ class Response implements ResponseInterface
      *
      * @var string
      */
-    private $protocolVersion = '';
+    private $protocolVersion = 'HTTP/1.1';
 
     /**
      * Kullanılacar karekter seti
