@@ -289,11 +289,9 @@ class Request implements ReposityInterface
      */
     public function getUrl()
     {
-        if (null !== $path = $this->server->get('PATH_INFO')) {
-            return $path;
-        }
+        $path = $this->server->get('PATH_INFO') ?: $this->uri;
 
-        return '';
+        return $path;
     }
 
     /**
