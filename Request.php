@@ -539,6 +539,61 @@ class Request implements ReposityInterface
     }
 
     /**
+     * determine http request method
+     *
+     * @return bool if method is post return true, else return false
+     */
+    public function isPost(){
+        return $this->getMethod() === self::METHOD_POST;
+    }
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is get return true, else return false
+     */
+    public function isGet(){
+        return $this->getMethod() === self::METHOD_GET || $this->getMethod() === self::METHOD_HEAD;
+    }
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is put return true, else return false
+     */
+    public function isPut(){
+        return $this->getMethod() === self::METHOD_PUT;
+    }
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is delete return true, else return false
+     */
+    public function isDelete(){
+        return $this->getMethod() === self::METHOD_DELETE;
+    }
+
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is options return true, else return false
+     */
+    public function isOptions(){
+        return $this->getMethod() === self::METHOD_OPTIONS;
+    }
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is options return true, else return false
+     */
+    public function isPurge(){
+        return $this->getMethod() === self::METHOD_PURGE;
+    }
+
+    /**
      * Get a subset of the items from the input data.
      *
      * @param array $keys
