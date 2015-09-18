@@ -310,7 +310,7 @@ class Request implements ReposityInterface
         if($count = count($parse) && count($parse) > 1){
             $path = array_slice($parse, 0, $count-1);
 
-            return join('/', $path);
+            return join('/', $path).'/';
         }else{
             return '/';
         }
