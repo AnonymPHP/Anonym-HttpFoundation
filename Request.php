@@ -298,18 +298,20 @@ class Request implements ReposityInterface
         return $path;
     }
 
+    /**
+     * find domcument root
+     *
+     * @return bool|string
+     */
     private function findDocumentRootInScriptFileName(){
-        $filename = $this->server->get('SCRIPT_FILENAME') ?: false;
 
+        $filename = $this->server->get('SCRIPT_FILENAME') ?: false;
         if (false === $filename) {
             return false;
         }
-
         $parse = explode('/', $filename);
-
         if($count = count($parse) && count($parse) > 1){
             $path = array_slice($parse, 0, $count-1);
-
             return join('/', $path).'/';
         }else{
             return '/';
