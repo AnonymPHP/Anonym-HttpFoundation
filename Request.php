@@ -298,6 +298,24 @@ class Request implements ReposityInterface
         return $path;
     }
 
+    private function findDocumentRootInScriptFileName(){
+        $filename = $this->server->get('SCRIPT_FILENAME') ?: false;
+
+        if (false === $filename) {
+            return false;
+        }
+
+        $parse = explode('/', $filename);
+
+        if($count = count($parse) && count($parse) > 1){
+            $path = array_slice($parse, 0, $count-1);
+
+            return join('/', $parse);
+        }else{
+            return '/';
+        }
+
+    }
     /**
      * get the port
      *
