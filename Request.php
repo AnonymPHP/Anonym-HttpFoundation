@@ -290,12 +290,28 @@ class Request implements ReposityInterface
     public function getUrl()
     {
 
-        if($this->findDocumentRootInScriptFileName() === $this->root){
+        if ($this->findDocumentRootInScriptFileName() === $this->removeLastSlash($this->root)) {
             return $this->uri;
         }
+
         $path = $this->server->get('PATH_INFO');
 
         return $path;
+    }
+
+    /**
+     * remove last slash from your string
+     *
+     * @param string $string
+     * @return string
+     */
+    protected function removeLastSlash($string)
+    {
+        if (substr($string, -1) === '/') {
+            return substr($string, 0, strlen($string) - 1);
+        }
+
+        return $string;
     }
 
     /**
@@ -303,21 +319,24 @@ class Request implements ReposityInterface
      *
      * @return bool|string
      */
-    private function findDocumentRootInScriptFileName(){
+    private function findDocumentRootInScriptFileName()
+    {
 
         $filename = $this->server->get('SCRIPT_FILENAME') ?: false;
         if (false === $filename) {
             return false;
         }
         $parse = explode('/', $filename);
-        if($count = count($parse) && count($parse) > 1){
+        $count = count($parse);
+        if ($count && $count > 1) {
             $path = array_slice($parse, 0, $count-1);
-            return join('/', $path).'/';
-        }else{
+            return $this->removeLastSlash(join('/', $path));
+        } else {
             return '/';
         }
 
     }
+
     /**
      * get the port
      *
@@ -536,7 +555,7 @@ class Request implements ReposityInterface
         // now we will register keys to result variable,
         // each of variables must be exists, if they are not exists
         // null will be add to result
-        foreach($keys as $key){
+        foreach ($keys as $key) {
             $result[$key] = isset($all[$key]) ? $all[$key] : null;
         }
 
