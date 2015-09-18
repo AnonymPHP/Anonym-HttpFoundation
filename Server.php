@@ -34,6 +34,7 @@ class Server
         'protocol'  => 'SERVER_PROTOCOL',
         'port'      => 'SERVER_PORT',
         'scheme'    => 'REQUEST_SCHEME',
+        'root'      => 'DOCUMENT_ROOT'
     ];
 
     /**
@@ -47,7 +48,6 @@ class Server
         $name = isset($this->references[$name]) ? $this->references[$name]: $this->resolveCase($name);
 
         return $this->has($name) ? $_SERVER[$name] : false;
-
     }
 
     /**

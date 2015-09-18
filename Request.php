@@ -289,7 +289,11 @@ class Request implements ReposityInterface
      */
     public function getUrl()
     {
-        $path = $this->server->get('PATH_INFO') ?: $this->uri;
+
+        if($this->findDocumentRootInScriptFileName() === $this->root){
+            return $this->uri;
+        }
+        $path = $this->server->get('PATH_INFO');
 
         return $path;
     }
