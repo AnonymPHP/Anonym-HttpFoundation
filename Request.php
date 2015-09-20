@@ -32,26 +32,65 @@ class Request implements ReposityInterface
      */
     private $response;
 
-
-    const METHOD_HEAD = 'HEAD';
-    const METHOD_GET = 'GET';
-    const METHOD_POST = 'POST';
-    const METHOD_PUT = 'PUT';
-    const METHOD_PATCH = 'PATCH';
-    const METHOD_DELETE = 'DELETE';
-    const METHOD_PURGE = 'PURGE';
-    const METHOD_OPTIONS = 'OPTIONS';
-    const METHOD_TRACE = 'TRACE';
-    const METHOD_CONNECT = 'CONNECT';
     /**
-     * Sınıf çağrılırken kullanılan header bilgilerini tutar
+     *  the constant of http head method
+     */
+    const METHOD_HEAD = 'HEAD';
+
+    /**
+     *  the constant of http get method
+     */
+    const METHOD_GET = 'GET';
+
+    /**
+     *  the constant of http post method
+     */
+    const METHOD_POST = 'POST';
+
+    /**
+     *  the constant of http put method
+     */
+    const METHOD_PUT = 'PUT';
+
+    /**
+     *  the constant of http patch method
+     */
+    const METHOD_PATCH = 'PATCH';
+
+    /**
+     *  the constant of http delete method
+     */
+    const METHOD_DELETE = 'DELETE';
+
+    /**
+     *  the constant of http purge method
+     */
+    const METHOD_PURGE = 'PURGE';
+
+    /**
+     *  the constant of http options method
+     */
+    const METHOD_OPTIONS = 'OPTIONS';
+
+    /**
+     *  the constant of http trace method
+     */
+    const METHOD_TRACE = 'TRACE';
+
+    /**
+     *  the constant of http connect method
+     */
+    const METHOD_CONNECT = 'CONNECT';
+
+    /**
+     * the headers of request headers
      *
      * @var array
      */
     private $headers = [];
 
     /**
-     * Cookileri döndürür
+     * the reposity of cookies
      *
      * @var array
      */
@@ -66,13 +105,16 @@ class Request implements ReposityInterface
     private $server;
 
     /**
-     *
+     * the reposity of request segments
      *
      * @var array
      */
     private $segments = [];
 
     /**
+     * the instance of validation
+     *
+     *
      * @var Validate
      */
     private $validate;
@@ -90,130 +132,6 @@ class Request implements ReposityInterface
         $this->setServer(new Server());
         $this->setValidate($validation);
         $this->segments = explode('/', $this->getUrl());
-
-    }
-
-    /**
-     * @return array
-     */
-    public function getSegments()
-    {
-        return $this->segments;
-    }
-
-    /**
-     * @param array $segments
-     * @return Request
-     */
-    public function setSegments($segments)
-    {
-        $this->segments = $segments;
-        return $this;
-    }
-
-    /**
-     * @return Validate
-     */
-    public function getValidate()
-    {
-        return $this->validate;
-    }
-
-    /**
-     * @param Validate $validate
-     * @return Request
-     */
-    public function setValidate(Validate $validate = null)
-    {
-        $this->validate = $validate;
-        return $this;
-    }
-
-
-    /**
-     * @return \Anonym\Components\HttpClient\Server
-     */
-    public function getServer()
-    {
-        return $this->server;
-    }
-
-    /**
-     * register the server instance
-     *
-     * @param \Anonym\Components\HttpClient\Server $server
-     * @return Request
-     */
-    public function setServer(Server $server)
-    {
-        $this->server = $server;
-        return $this;
-    }
-
-
-    /**
-     * @return array
-     */
-    public function getCookies()
-    {
-        return $this->cookies;
-    }
-
-    /**
-     * @param array $cookies
-     * @return Request
-     */
-    public function setCookies($cookies)
-    {
-        $this->cookies = $cookies;
-
-        return $this;
-    }
-
-
-    /**
-     * Header bilgilerini döndürür
-     *
-     * @return array
-     */
-    public function getHeaders()
-    {
-        return $this->headers;
-    }
-
-    /**
-     * Header bilgilerini atar
-     *
-     * @param array $headers
-     * @return Request
-     */
-    public function setHeaders($headers)
-    {
-        $this->headers = $headers;
-        return $this;
-    }
-
-
-    /**
-     * return the registered response instance
-     *
-     * @return Response
-     */
-    public function getResponse()
-    {
-        return $this->response;
-    }
-
-    /**
-     * register the response instance
-     *
-     * @param Response $response the instance of response
-     * @return Request return $this
-     */
-    public function setResponse(Response $response)
-    {
-        $this->response = $response;
-        return $this;
     }
 
     /**
@@ -593,6 +511,33 @@ class Request implements ReposityInterface
         return $this->getMethod() === self::METHOD_PURGE;
     }
 
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is options return true, else return false
+     */
+    public function isTrace(){
+        return $this->getMethod() === self::METHOD_TRACE;
+    }
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is options return true, else return false
+     */
+    public function isConnect(){
+        return $this->getMethod() === self::METHOD_CONNECT;
+    }
+
+    /**
+     * determine http request method
+     *
+     * @return bool if method is options return true, else return false
+     */
+    public function isPatch(){
+        return $this->getMethod() === self::METHOD_PATCH;
+    }
     /**
      * Get a subset of the items from the input data.
      *
@@ -617,4 +562,129 @@ class Request implements ReposityInterface
         return $result;
 
     }
+
+
+    /**
+     * @return array
+     */
+    public function getSegments()
+    {
+        return $this->segments;
+    }
+
+    /**
+     * @param array $segments
+     * @return Request
+     */
+    public function setSegments($segments)
+    {
+        $this->segments = $segments;
+        return $this;
+    }
+
+    /**
+     * @return Validate
+     */
+    public function getValidate()
+    {
+        return $this->validate;
+    }
+
+    /**
+     * @param Validate $validate
+     * @return Request
+     */
+    public function setValidate(Validate $validate = null)
+    {
+        $this->validate = $validate;
+        return $this;
+    }
+
+
+    /**
+     * @return \Anonym\Components\HttpClient\Server
+     */
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    /**
+     * register the server instance
+     *
+     * @param \Anonym\Components\HttpClient\Server $server
+     * @return Request
+     */
+    public function setServer(Server $server)
+    {
+        $this->server = $server;
+        return $this;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getCookies()
+    {
+        return $this->cookies;
+    }
+
+    /**
+     * @param array $cookies
+     * @return Request
+     */
+    public function setCookies($cookies)
+    {
+        $this->cookies = $cookies;
+
+        return $this;
+    }
+
+
+    /**
+     * Header bilgilerini döndürür
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    /**
+     * Header bilgilerini atar
+     *
+     * @param array $headers
+     * @return Request
+     */
+    public function setHeaders($headers)
+    {
+        $this->headers = $headers;
+        return $this;
+    }
+
+
+    /**
+     * return the registered response instance
+     *
+     * @return Response
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
+     * register the response instance
+     *
+     * @param Response $response the instance of response
+     * @return Request return $this
+     */
+    public function setResponse(Response $response)
+    {
+        $this->response = $response;
+        return $this;
+    }
+
 }
