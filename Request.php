@@ -131,21 +131,23 @@ class Request
      * @var Query
      */
     private $query;
+
+
     /**
      * Sınıfı başlatır ve header bilgilerini atar
      */
     public function __construct(Validate $validation = null)
     {
-
         $headers = (new ServerHttpHeaders())->getHeaders();
         $this->setHeaders($headers);
         $this->setCookies((new CookieBag())->getCookies());
         $this->setResponse(new Response());
         $this->setServer(new Server());
         $this->setValidate($validation);
+        $this->setInput(new Input());
+        $this->setQuery( new Query());
         $this->segments = explode('/', $this->getUrl());
     }
-
     /**
      * upload a file with input name and uplaod dir,
      *
