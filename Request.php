@@ -9,12 +9,11 @@
 
 namespace Anonym\Components\HttpClient;
 
-use Anonym\Components\Cookie\Http\CookieBag;
-use Anonym\Components\Cookie\ReposityInterface;
 use Anonym\Components\HttpClient\Server;
-use Anonym\Components\HttpClient\ServerHttpHeaders;
 use Anonym\Components\Upload\FileUpload;
+use Anonym\Components\Cookie\Http\CookieBag;
 use Anonym\Components\Security\Validation as Validate;
+
 
 /**
  * the class of request
@@ -22,7 +21,7 @@ use Anonym\Components\Security\Validation as Validate;
  * Class Request
  * @package Anonym\Components\HttpClient
  */
-class Request implements ReposityInterface
+class Request
 {
 
     /**
@@ -135,10 +134,15 @@ class Request implements ReposityInterface
     }
 
     /**
-     * upload a file
+     * upload a file with input name and uplaod dir,
      *
-     * @param string $name
-     * @param string $uploadDir
+     * ////////////////
+     *
+     *  $name parameter must be a string and it is has to be exists
+     *  $uploadDir         must be an instance of string and it's must be a dir.
+     *
+     * @param string $name        the name of upload input
+     * @param string $uploadDir   the dir to upload file
      * @throws FileNotUploadedException
      * @return FileUpload
      */
