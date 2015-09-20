@@ -119,6 +119,19 @@ class Request
     private $validate;
 
     /**
+     * the instance of input
+     *
+     * @var Input
+     */
+    private $input;
+
+    /**
+     * the instance of query
+     *
+     * @var Query
+     */
+    private $query;
+    /**
      * Sınıfı başlatır ve header bilgilerini atar
      */
     public function __construct(Validate $validation = null)
