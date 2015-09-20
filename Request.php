@@ -402,13 +402,22 @@ class Request
 
 
     /**
-     * get all input variables
+     * return all input variables
      *
      * @return mixed
      */
     public function all()
     {
-        return Input::getAll();
+        return $this->getInput()->getAll();
+    }
+
+    /**
+     * return all query variables
+     *
+     * @return mixed
+     */
+    public function query(){
+        return  $this->getQuery()->getAll();
     }
 
     /**
