@@ -23,7 +23,7 @@ class Query
      * @param string $name
      * @return boolean
      */
-    public static function has($name = null)
+    public  function has($name = null)
     {
         if (isset($_GET)) {
             return isset($_GET[$name]);
@@ -36,7 +36,7 @@ class Query
      * @param string $name
      * @return mixed
      */
-    public static function get($name)
+    public  function get($name)
     {
         return $_GET[$name];
     }
@@ -47,7 +47,7 @@ class Query
      * @param string $name
      * @param mixed $value
      */
-    public static function set($name, $value)
+    public  function set($name, $value)
     {
         $_GET[$name] = $value;
     }
@@ -57,7 +57,7 @@ class Query
      *
      * @param string $name
      */
-    public static function delete($name)
+    public  function delete($name)
     {
         unset($_GET[$name]);
     }
@@ -67,7 +67,7 @@ class Query
      *
      * Post verilerini döndürür
      */
-    public static function getAll()
+    public  function getAll()
     {
         if (isset($_GET)) {
             return $_GET;
