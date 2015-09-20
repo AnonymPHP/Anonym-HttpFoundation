@@ -158,7 +158,7 @@ class Request
 
 
     /**
-     * return the user ip
+     * find the user client ip, this can be find some proxies
      *
      * @return string
      */
@@ -181,7 +181,7 @@ class Request
 
 
     /**
-     * add a new header
+     * add a new header to response
      *
      * @param string $name the name of header
      * @param string $value the value of header
@@ -205,22 +205,30 @@ class Request
 
 
     /**
-     * find and return called url
+     * if some one called this method, firstly we gonna determine index.php is located on root path
+     * and if it is located on root, we gonna server request uri parameter
+     * if it is not, we gonna return $_SERVER[PATH_INFO]
      *
      * @return string
      */
     public function getUrl()
     {
-
         if ($this->findDocumentRootInScriptFileName() === $this->removeLastSlash($this->root)) {
             return $this->uri;
         }
-
         $path = $this->server->get('PATH_INFO');
 
         return $path;
     }
 
+    /**
+     *
+     *
+     * @return string
+     */
+    public function getUri(){
+        return $this->getUrl();
+    }
     /**
      * remove last slash from your string
      *
