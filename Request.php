@@ -222,7 +222,7 @@ class Request
     }
 
     /**
-     *
+     * find and return user called uri
      *
      * @return string
      */
@@ -245,7 +245,7 @@ class Request
     }
 
     /**
-     * find domcument root
+     * find document root in server script filename
      *
      * @return bool|string
      */
@@ -268,7 +268,7 @@ class Request
     }
 
     /**
-     * get the port
+     * find and return requested port
      *
      * @return string
      */
@@ -278,7 +278,7 @@ class Request
     }
 
     /**
-     * get the host
+     * find and return requested host
      *
      * @return string
      */
@@ -289,7 +289,7 @@ class Request
 
 
     /**
-     * get the request scheme
+     * find and return request scheme, if we can not find scheme we gonna return 'http'
      *
      * @return string
      */
@@ -300,7 +300,7 @@ class Request
 
 
     /**
-     * get the http referer
+     * find and return http_referer parameter
      *
      * @return string
      */
@@ -310,7 +310,7 @@ class Request
     }
 
     /**
-     * get the http host
+     * find and create full host uri with http scheme and port
      *
      * example : localhost
      * example : localhot:443
@@ -330,7 +330,7 @@ class Request
     }
 
     /**
-     * get the query string
+     * find and return http query string
      *
      * @return string
      */
@@ -340,7 +340,7 @@ class Request
     }
 
     /**
-     * get the request uri
+     * find and return requested uri
      *
      *
      * @return string
@@ -375,7 +375,7 @@ class Request
     }
 
     /**
-     * check the url
+     * we gonna determine url availability and return it
      *
      * @param string $url
      * @return bool
