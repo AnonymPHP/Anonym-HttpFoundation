@@ -712,4 +712,41 @@ class Request
         return $this;
     }
 
+    /**
+     * @return Input
+     */
+    public function getInput()
+    {
+        return $this->input;
+    }
+
+    /**
+     * @param Input $input
+     * @return Request
+     */
+    public function setInput(Input $input)
+    {
+        $this->input = $input;
+        return $this;
+    }
+
+    /**
+     * @return Query
+     */
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
+    /**
+     * @param Query $query
+     * @return Request
+     */
+    public function setQuery(Query $query)
+    {
+        $this->query = $query;
+        return $this;
+    }
+
+
 }
