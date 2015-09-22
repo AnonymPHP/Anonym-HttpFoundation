@@ -229,7 +229,7 @@ class Request
     public function getUrl()
     {
         if ($this->findDocumentRootInScriptFileName() === $this->removeLastSlash($this->root)) {
-            return $this->uri;
+            return $this->getRequestUri();
         }
         $path = $this->server->get('PATH_INFO');
 
@@ -362,7 +362,7 @@ class Request
      */
     public function getRequestUri()
     {
-        return $this->uri;
+        return str_replace('?'.$this->getQueryString(), '', $this->uri);
     }
 
     /**
