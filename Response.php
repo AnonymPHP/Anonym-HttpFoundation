@@ -9,6 +9,7 @@
 
 namespace Anonym\Components\HttpClient;
 
+use Anonym\Components\Support\Macroable;
 use Anonym\Components\Cookie\Cookie;
 use Anonym\Components\Cookie\CookieContainer;
 use Anonym\Components\Cookie\UseCookieHeaders;
@@ -21,6 +22,8 @@ use Anonym\Components\HttpClient\ResponseInterface;
  */
 class Response implements ResponseInterface
 {
+
+    use Macroable;
     /**
      * dosya tipi
      *
