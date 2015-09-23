@@ -17,6 +17,7 @@ namespace Anonym\Components\HttpClient;
  */
 class Query
 {
+
     /**
      * $name' e atanan veriye göre $_GET da veri varmı yokmu onu kontrol eder
      *
